@@ -4,26 +4,26 @@
 
 ## idée générale de l'application
 
-### Une application de gestion des stocks est un outil qui permet de suivre toutes les informations des marchandises gérées dans un entrepôt. 
+#### Une application de gestion des stocks est un outil qui permet de suivre toutes les informations des marchandises gérées dans un entrepôt. 
 Ses fonctionnalités en font une application complète pour toute entreprise qui souhaite optimiser la gestion de ses stocks, 
 une tâche indispensable pour maintenir la rentabilité de l’entreprise.
 
-### un logiciel pour gerer votre Activite commerciale Quelles que soient les specificites de l'activite ou la taille de l'entreprise ,la gestion commerciale est une solution adaptee aux besoins des entreprise
+#### un logiciel pour gerer votre Activite commerciale Quelles que soient les specificites de l'activite ou la taille de l'entreprise ,la gestion commerciale est une solution adaptee aux besoins des entreprise
 
-la gestion de tout activite commerciale de la commande a la livraison :
+### la gestion de tout activite commerciale de la commande a la livraison :
 devis factures, gestion de stock ,etc ... 
 
 
 
-## User Stories
+# User Stories
 
-####  Clients
+##### Clients
 
 Ajouter client 
 liste des clients
 situation clients
 
-### fournisseurs
+#### fournisseurs
 
 Ajouter fournisseur
 liste des fournisseurs
@@ -31,65 +31,65 @@ situation fournisseurs
 
 
 
-### produits
+#### produits
 Ajouter produit
 liste des produits
 stocks
 
 
-### Entrepots
+#### Entrepots
 Ajouter entrepot
 liste des entrepot
 Mouvement
 
-### devis
+#### devis
 Nouvelle devis
 liste des devis
 
-### commande clients
+#### commande clients
 Nouvelle commande
 liste des demande
 
 
-### commande fournisseurs
+#### commande fournisseurs
 nouvelle commande 
 Liste commande
 
-### Facteur Clients
+#### Facteur Clients
 Nouvelle facture
 liste des factures
 
-### facteur fournisseur
+#### facteur fournisseur
 Nouvelle facture
 liste des facture
 
-### Reglement client 
+#### Reglement client 
 reglements des bons 
 reglements des factures
 
-### Regelement fournisseur
+#### Regelement fournisseur
 Regelements des Factures 
 
-### Configuration 
+#### Configuration 
 -Socite /organisation 
 configuration Tva 
 Sauvegarder 
 Restauration 
 
 
-### Utilisateurs
+#### Utilisateurs
 Nouvel utilisateur
 Liste des utilisateurs
 
 
 
 
-#### les outils de developpement :
+###### les outils de developpement :
 
-#### ==>l'application est Web donc nous proposon les technologies suivante :
+##### ==>l'application est Web donc nous proposon les technologies suivante :
 
-##### ->PHP 
-##### ->Javascript +AJAX 
+###### ->PHP 
+###### ->Javascript +AJAX 
 ##### ->HTML CSS Bootstrap 
 ##### ->Mysql pour la base du donne 
 ##### -> Uml et Merise pour la conception
