@@ -1,10 +1,10 @@
 # fil-rouge
 
-#Fiche technique d'une application de gestion de stock
+# Fiche technique d'une application de gestion de stock
 
 ##idée générale de l'application
 
-###Une application de gestion des stocks est un outil qui permet de suivre toutes les informations des marchandises gérées dans un entrepôt. 
+### Une application de gestion des stocks est un outil qui permet de suivre toutes les informations des marchandises gérées dans un entrepôt. 
 Ses fonctionnalités en font une application complète pour toute entreprise qui souhaite optimiser la gestion de ses stocks, 
 une tâche indispensable pour maintenir la rentabilité de l’entreprise.
 
@@ -63,7 +63,7 @@ liste des factures
 Nouvelle facture
 liste des facture
 
-###Reglement client 
+### Reglement client 
 reglements des bons 
 reglements des factures
 
