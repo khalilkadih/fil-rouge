@@ -2,7 +2,7 @@
 include('includes/header.php'); 
 include('includes/navbar.php'); 
 ?>
-<h1>hello from omar</h1>
+
 
 <!-- Begin Page Content -->
 <div class="container-fluid">
