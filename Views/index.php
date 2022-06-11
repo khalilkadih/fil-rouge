@@ -35,7 +35,7 @@
             <input type="password" class="form-control mb-4" placeholder="Entre your password"
               id="exampleInputPassword1">
           </div>
-          <button type="button" onclick="window.location.href='dashboard.html';"
+          <button type="button" onclick="window.location.href='dashboard.php';"
             class="btn  btn-info w-100 text-white text-uppercase  ">
             sign in
           </button>
