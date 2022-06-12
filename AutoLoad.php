@@ -12,3 +12,4 @@ spl_autoload_register(function($className)
         require_once($path);
     }
 });
+const base_url="https://localhost/pfa/views";

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sign in</title>
-  <link rel="stylesheet" href="css/sign_in.css">
+  <link rel="stylesheet" href="<?=base_url?>/css/sign_in.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" />
 
 <body>
@@ -35,7 +36,7 @@
             <input type="password" class="form-control mb-4" placeholder="Entre your password"
               id="exampleInputPassword1">
           </div>
-          <button type="button" onclick="window.location.href='dashboard.php';"
+          <button type="button" onclick="window.location.href='Views/home.php';"
             class="btn  btn-info w-100 text-white text-uppercase  ">
             sign in
           </button>

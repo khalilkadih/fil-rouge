@@ -110,7 +110,5 @@
                 //End coding chart2
             </script>
     </main>
-
 </body>
-
 </html>
