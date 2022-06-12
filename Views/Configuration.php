@@ -25,7 +25,7 @@
 
 
                         <div class="text-center">
-                          <img src="./img/user (1).png" class="w-50">
+                          <img src="<?=BASE_URL_WITH_VIEWS?>/img/user (1).png" class="w-50">
                         </div><!-- End sidebar categories-->
 
                         <h3 class="text-center my-2">Maryam elhajouji</h3>
