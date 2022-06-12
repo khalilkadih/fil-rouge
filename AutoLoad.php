@@ -12,4 +12,5 @@ spl_autoload_register(function($className)
         require_once($path);
     }
 });
-const base_url="https://localhost/pfa/views";
+const BASE_URL_WITH_VIEWS="http://localhost/pfa/views";
+const BASE_URL="http://localhost/pfa/";
