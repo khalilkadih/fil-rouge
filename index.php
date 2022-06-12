@@ -7,8 +7,8 @@ require_once('./app/session.php');
 use database\Connection;
 use controllers\HomeController;
 $home = new HomeController();
-$pages = ['index', 'Achat', 'Clients', 'Configuration','dashboard','produit','fournisseurs','rapports','utilisateur','vente','home'];
-
+$pages = ['index', 'Achat', 'Clients','login', 'Configuration','dashboard','produit','fournisseurs','rapports','utilisateur','vente','home'];
+// $folders=['users_views','produits_views','vente_views','rapports_views','fournisseurs_views','clients_views','configuration_views','dashboard_views'];
     $page = str_replace("/pfa/",'',$_SERVER['REQUEST_URI']);
     if ((in_array($page, $pages))) {
         $home->index($page);
