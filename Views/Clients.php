@@ -18,7 +18,8 @@
                             <form class="d-flex  justify-content-end mt-3 ">
                                 <input class="form-control me-2 " type="search" placeholder="Search..."
                                     aria-label="Search">
-                                <a href="./profile.php" class="mx-3 "> <img src="./img/user (1).png"
+                                <a href="<?=BASE_URL_WITH_VIEWS?>/profile.php" class="mx-3 ">
+                                    <img src="<?=BASE_URL_WITH_VIEWS?>/img/user (1).png"
                                         class="mx-3 w-75"></a>
 
                             </form>
