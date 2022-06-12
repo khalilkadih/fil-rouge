@@ -7,7 +7,7 @@ require_once('includes/header.php'); ?>
         <div id="page-content-dashboard" class="bt">
             <nav class="navbar navbar-expand-lg   py-1 px-4 cont ">
                 <div class="d-flex align-items-center">
-
+    
                     <i class="fa fa-bars me-3 " id="menu-toggle"></i>
                     <h5>Accueil</h5>
                 </div>
@@ -67,4 +67,4 @@ require_once('includes/header.php'); ?>
 
 
     <?php
-    require_once('<includes/footer.php');
+    require_once('includes/footer.php');
