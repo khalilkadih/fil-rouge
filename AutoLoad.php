@@ -12,5 +12,13 @@ spl_autoload_register(function($className)
         require_once($path);
     }
 });
-const BASE_URL_WITH_VIEWS="http://localhost/pfa/views";
-const BASE_URL="http://localhost/pfa/";
+// foreach (glob('./app/controllers/*.php') as $filename)
+// {
+//     require_once($filename);
+// }
+// foreach (glob('./app/models/*.php') as $filename)
+// {
+//     require_once($filename);
+// }
+
+
