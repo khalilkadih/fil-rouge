@@ -25,7 +25,7 @@
                     <div class="nav-item ">
                         <form class="d-flex  justify-content-end mt-3 ">
                             <input class="form-control me-2 " type="search" placeholder="Search..." aria-label="Search">
-                            <a href="./profile.php" class="mx-3 "> <img src="./img/user (1).png" class="mx-3 w-75"></a>
+                            <a href="./profile.php" class="mx-3 "> <img src="<?=BASE_URL_WITH_VIEWS?>/img/user (1).png" class="mx-3 w-75"></a>
                         </form>
                     </div>
                 </div>
@@ -45,7 +45,7 @@
                     <div class="col-lg-3  col-md-5  mb-4 ">
                         <div class="p-3  d-flex justify-content-around align-items-center card_cours ">
                             <div>
-                                <img src="./img/approval.png">
+                                <img src="<?=BASE_URL_WITH_VIEWS?>/img/approval.png">
                                 <p class="fs-5 mb-5 Secondary-text">Cas du stock </p>
                             </div>
                             <h1 class="fs-5 mt-5 text-white">13</h1>
@@ -54,7 +54,7 @@
                     <div class=" col-lg-3  col-md-5  mb-4">
                         <div class="p-3   d-flex justify-content-around align-items-center card_payment ">
                             <div>
-                                <img src="./img/bookingCart.png">
+                                <img src="<?=BASE_URL_WITH_VIEWS?>/img/bookingCart.png">
 
                                 <p class="fs-5 mb-5 Secondary-text">vente d'aujourd'hui</p>
                             </div>

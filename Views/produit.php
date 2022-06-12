@@ -30,7 +30,7 @@
                         <div class="nav-item ">
                             <form class="d-flex  justify-content-end mt-3 ">
                                 <input class="form-control me-2 " type="search" placeholder="Search..." aria-label="Search">
-                                <a href="./profile.html" class="mx-3 "> <img src="./img/user (1).png" class="mx-3 w-75"></a>
+                                <a href="./profile.html" class="mx-3 "> <img src="<?=BASE_URL_WITH_VIEWS?>/img/user (1).png" class="mx-3 w-75"></a>
 
                             </form>
                         </div>
@@ -60,7 +60,7 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td> <img src="image/user.jpg" alt="user" style="width: 50px;"></td>
+                                            <td> <img src="<?=BASE_URL_WITH_VIEWS?>/image/user.jpg" alt="user" style="width: 50px;"></td>
                                             <td>username</td>
                                             <td>user@email.com</td>
                                             <td>7305477760</td>
