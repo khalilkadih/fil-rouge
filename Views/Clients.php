@@ -1,4 +1,13 @@
-<?php require_once('includes/header.php'); ?>
+<?php
+
+use Controllers\Client_Controller;
+
+ require_once('includes/header.php'); 
+$client=new Client_Controller();
+$clients=$client->Get_All_Client();
+// print_r($clients);
+
+?>
 
     <main>
         <div class="d-flex" id="dashboard">
@@ -44,22 +53,36 @@
                                             <th>Telephone</th>
                                             <th>Adress</th>
                                             <th>Observation </th>
-                                            <th>solde non payé</th>
                                             <th class="text-center"> Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php foreach($clients as $client):?>
                                         <tr>
-                                            <td>username</td>
-                                            <td>user@email.com</td>
-                                            <td>7305477760</td>
-                                            <td>1234567305477760</td>
-                                            <td>08-Dec, 2021</td>
-                                            <td>Laptop and PC</td>
-                                            <td> <i class="fas fa-pen mx-4 "></i></td>
-                                            <td> <i class="fas fa-trash  "></i></td>
+                                            <td><?=$client['id_client']?></td>
+                                            <td><?=$client['name_client']?> 
+                                            <td><?=$client['telephone_client']?></td>
+                                            <td><?=$client['adress_client']?></td>
+                                            <td><?=$client['observation_client']?></td>
+
+                                          
+                                            <td class="text-center">
+                                                <a href="<?=BASE_URL_WITH_VIEWS?>/profile.php"
+                                                    class="btn btn-primary btn-sm">
+                                                    <i class="fa fa-eye"></i>
+                                                </a>
+                                                <a href="<?=BASE_URL_WITH_VIEWS?>/profile.php"
+                                                    class="btn btn-primary btn-sm">
+                                                    <i class="fa fa-edit"></i>
+                                                </a>
+                                                <a href="<?=BASE_URL_WITH_VIEWS?>/profile.php"
+                                                    class="btn btn-primary btn-sm">
+                                                    <i class="fa fa-trash"></i>
+                                                </a>
+                                            </td>
                                         </tr>
                                     </tbody>
+                                    <?php endforeach;?>
                                 </table>
                             </div>
                         </div>

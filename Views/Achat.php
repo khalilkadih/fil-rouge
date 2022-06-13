@@ -1,5 +1,12 @@
 <?php
-require_once('includes/header.php'); ?>
+
+use Controllers\Achat_Controller;
+
+require_once('includes/header.php');
+$achat=new Achat_Controller();
+$achats=$achat->Get_All_Achat();
+//  print_r($achats);
+?>
 <main>
     <div class="d-flex" id="dashboard">
        <?php require_once('includes/navigation.php'); ?>
@@ -47,17 +54,23 @@ require_once('includes/header.php'); ?>
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php foreach($achats as $achat): ?>
                                 <tr>
-                                    <td>1</td>
-                                    <td>username</td>
-                                    <td>user@email.com</td>
-                                    <td>7305477760</td>
-                                    <td>1234567305477760</td>
-                                    <td>08-Dec, 2021</td>
-                                    <td> <i class="fas fa-pen mx-4 "></i></td>
-                                    <td> <i class="fas fa-trash  "></i></td>
+                                <!-- (`id_commande_fournisseur`, `id_fournisseur`, `date_commande_fournissuer`,  -->
+                                <!-- `quantite_commande_fournisseur`, `prix_total_commande_fournisseur`, `id_product`)                                                                -->
+                                    <td><?= $achat['id_commande_fournisseur']?></td>
+                                    <td><?= $achat['id_product']?></td>
+                                    <td><?= $achat['id_fournisseur']?></td>
+                                    <td><?= $achat['quantite_commande_fournisseur']?></td>
+                                    <td><?= $achat['prix_total_commande_fournisseur']?></td>
+                                    <td><?= $achat['date_commande_fournissuer']?></td>
+                                    <td><a href="<?=BASE_URL?>/editAchat/<?=$achat['id_commande_fournisseur']?>"><i class="fas fa-edit"></i></a></td>
+                                    <td><a href="<?=BASE_URL?>/deleteAchat/<?=$achat['id_commande_fournisseur']?>"><i class="fas fa-trash-alt"></i></a></td>
+
+
                                 </tr>
                             </tbody>
+                            <?php endforeach; ?>
                         </table>
                     </div>
                 </div>

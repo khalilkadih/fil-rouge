@@ -1,5 +1,14 @@
 
-<?php require_once('includes/header.php'); ?>
+<?php
+
+use Controllers\Fournisseur_Controller;
+
+ require_once('includes/header.php'); 
+
+$fournisseur = new Fournisseur_Controller();
+$fournisseurs = $fournisseur->Get_All_Fournisseur();  
+// print_r($fournisseurs);
+?>
 
     <main>
         <div class="d-flex" id="dashboard">
@@ -45,24 +54,37 @@
                                             <th>Telephone</th>
                                             <th>Adress</th>
                                             <th>Observation </th>
-                                            <th>solde non payé</th>
-                                            <th>Produit Fournit</th>
+                                            <!-- <th>solde non payé</th>
+                                            <th>Produit Fournit</th> -->
                                             <th class="text-center"> Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    <?php foreach($fournisseurs as $fournisseur): ?>
+                                    
                                         <tr>
-                                            <td>username</td>
-                                            <td>user@email.com</td>
-                                            <td>7305477760</td>
-                                            <td>1234567305477760</td>
-                                            <td>08-Dec, 2021</td>
-                                            <td>Laptop and PC</td>
-                                            <td>HP</td>
-                                            <td> <i class="fas fa-pen mx-4 "></i></td>
-                                            <td> <i class="fas fa-trash  "></i></td>
+                                            <td><?= $fournisseur['id_fournisseur']?></td>
+                                            <td><?= $fournisseur['name_fournisseur']?></td>
+                                            <td><?= $fournisseur['telephone_fournisseur']?></td>
+                                            <td><?= $fournisseur['adress_fournisseur']?></td>
+                                            <td><?= $fournisseur['observation_fournisseur']?></td>
+                                    
+                                            <td class="text-center">
+                                                <a href="<?=BASE_URL_WITH_VIEWS?>/fournisseur.php?id=<?=$fournisseur['id_fournisseur']?>" class="btn btn-primary">
+                                                    <i class="fa fa-eye"></i>
+                                                </a>
+                                                <a href="<?=BASE_URL_WITH_VIEWS?>/fournisseur.php?id=<?=$fournisseur['id_fournisseur']?>" class="btn btn-primary">
+                                                    <i class="fa fa-edit"></i>
+                                                </a>
+                                                <a href="<?=BASE_URL_WITH_VIEWS?>/fournisseur.php?id=<?=$fournisseur['id_fournisseur']?>" class="btn btn-primary">
+                                                    <i class="fa fa-trash"></i>
+                                                </a>
+
+                                            <!-- <td> <i class="fas fa-pen mx-4 "></i></td>
+                                            <td> <i class="fas fa-trash  "></i></td> -->
                                         </tr>
                                     </tbody>
+                                    <?php endforeach; ?>
                                 </table>
                             </div>
                         </div>

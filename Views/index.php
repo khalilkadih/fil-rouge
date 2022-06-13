@@ -13,8 +13,8 @@
     <div class="login d-flex justify-content-center align-items-center">
       <div class="bg-white p-4 rounded-3 login_content ">
 
-        <div class=" mb-4">
-          <h1 class="border-start px-2 m-3 border-info border-5 fw-bold fs-3">
+        <div class=" mb-6">
+          <h1 class="border-start px-2 m-5 border-primary border-5 fw-bold fs-3">
             Gestion de Stock
           </h1>
         </div>
@@ -34,10 +34,10 @@
             <label for="exampleInputPassword1" class="form-label">Password</label>
             <input type="password" class="form-control mb-4" placeholder="Entre your password" id="exampleInputPassword1">
           </div>
-          <button type="button" onclick="window.location.href='<?= BASE_URL ?>home';" class="btn  btn-info w-100 text-white text-uppercase  ">
+          <button type="button" onclick="window.location.href='<?= BASE_URL ?>home';" class="btn  btn-primary w-100 text-white text-uppercase  ">
             sign in
           </button>
-          <div class="mt-3 text-center">
+          <div class="mt-2 text-center">
             <span class="text-muted">
               Forgot your password?
             </span>

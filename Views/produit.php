@@ -1,3 +1,13 @@
+<?php
+
+use controllers\Product_Controller;
+
+$product=new Product_Controller();
+$results=$product->Get_All_Product();
+// echo '<pre>';
+// print_r($results);
+// echo '</pre>';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -49,27 +59,31 @@
                                     <thead>
                                         <tr>
                                             <th>Id </th>
-                                            <th>libille</th>
-                                            <th>description</th>
+                                            <th>name of product</th>
                                             <th>Quantite Stocke</th>
                                             <th>Prix d'achat </th>
                                             <th>prix de vente</th>
-                                            <th>categorie</th>
+                                            <th>categorie name</th>
                                             <th class="text-center"> Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td> <img src="<?=BASE_URL_WITH_VIEWS?>/image/user.jpg" alt="user" style="width: 50px;"></td>
-                                            <td>username</td>
-                                            <td>user@email.com</td>
-                                            <td>7305477760</td>
-                                            <td>1234567305477760</td>
-                                            <td>08-Dec, 2021</td>
-                                            <td>Laptop and PC</td>
-                                            <td> <i class="fas fa-pen mx-4 "></i></td>
-                                            <td> <i class="fas fa-trash  "></i></td>
-                                        </tr>
+                                    <!-- (`id_product`, `name_product`, `qte_aviable`, `prix_achat`, `prix_vente`, `id_categorie`) -->
+                                        <?php foreach ($results as $result) { ?>
+                                            <tr>
+                                                <td><?php echo $result['id_product'] ?></td>
+                                                <td><?php echo $result['name_product'] ?></td>
+                                                <td><?= $result['qte_aviable'] ?></td>
+                                                <td><?= $result['prix_achat'] ?></td>
+                                                <td><?= $result['prix_vente'] ?></td>
+                                                <td><?= $result['name_categorie'] ?></td>
+                                                <td class="text-center">
+                                                    <a href="<?=BASE_URL_WITH_VIEWS?>/product/edit?id=<?=$result['id_product']?>" class="btn btn-primary">Edit</a>
+                                                    <a href="<?=BASE_URL_WITH_VIEWS?>/product/delete?id=<?=$result['id_product']?>" class="btn btn-danger">Delete</a>
+                                                </td>
+                                            </tr>
+                                  
+                                        <?php } ?>
                                     </tbody>
                                 </table>
                             </div>

@@ -19,13 +19,14 @@
                     </div>
                 </nav>
                 <div class="container-fluid px-4">
-                    <div class="row my-2 d-flex justify-content-center">
-                        <div class="col-lg-3 col-md-5 mb-4 ">
-                            <div class="p-3 d-flex justify-content-around align-items-center card_student ">
-                                <div>
-                                    <i class="fas fa-graduation-cap fs-5  p-1"></i>
-
-                                    <p class="fs-5 mb-5 Secondary-text">Fournisseur</p>
+                    <div class="row my-2 d-flex justify-content-center bg-primary">
+                        <div class="col-lg-3 col-md-5 mb-4  ">
+                            <div class="p-3 d-flex justify-content-around align-items-center card_student bg-secondary ">
+                                <div >
+                                    <p class="fs-5 mb-5 Secondary-text text-white">
+                                       <img src="<?= BASE_URL_WITH_VIEWS ?>/img/supplier.png"style="width: 50px;height: 50px;">
+                                      Fournisseur
+                                    </p>
                                 </div>
                                 <h1 class="fs-5 mt-5">243</h1>
                             </div>
@@ -39,12 +40,12 @@
                                 <h1 class="fs-5 mt-5 text-white">13</h1>
                             </div>
                         </div>
-                        <div class=" col-lg-3  col-md-5  mb-4">
-                            <div class="p-3   d-flex justify-content-around align-items-center card_payment ">
+                        <div class=" col-lg-3  col-md-5  mb-4 ">
+                            <div class="p-3   d-flex justify-content-around align-items-center card_payment bg-secondary ">
                                 <div>
                                     <img src="<?= BASE_URL_WITH_VIEWS ?>/img/bookingCart.png">
 
-                                    <p class="fs-5 mb-5 Secondary-text">vente d'aujourd'hui</p>
+                                    <p class="fs-5 mb-5 Secondary-text text-white">vente d'aujourd'hui</p>
                                 </div>
                                 <h1 class="fs-5 mt-5">556</h1>
                             </div>
@@ -68,10 +69,7 @@
                                 <canvas id="myChart" style="width:100%;max-width:500px"></canvas>
                                 <canvas id="chart2" style="width:100%;max-width:500px"></canvas>
                             </div>
-                            <div class="d-flex">
-                                <canvas id="Chart3" style="width:100%;max-width:500px"></canvas>
-                                <canvas id="chart4" style="width:100%;max-width:500px"></canvas>
-                            </div>
+                            
 
 
 
