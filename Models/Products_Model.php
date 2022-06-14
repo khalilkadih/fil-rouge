@@ -13,4 +13,25 @@ class Products_Model
         $cnx->execute();
         return $products = $cnx->fetchAll();
     }
+    //insert product
+  static public function Insert_Product($data)
+  {
+    $cnx=Connection::Connect()->prepare('INSERT INTO product (name_product,id_categorie,qte_aviable,prix_achat,prix_vente) 
+    VALUES (:name_product,:id_categorie,:qte_aviable,:prix_achat,:prix_vente)');
+    $cnx->bindParam(':name_product',$data['name_product']);
+    $cnx->bindParam(':id_categorie',$data['id_categorie']);
+    $cnx->bindParam(':qte_aviable',$data['qte_aviable']);
+    $cnx->bindParam(':prix_achat',$data['prix_achat']);
+    $cnx->bindParam(':prix_vente',$data['prix_vente']);
+    print_r($data);
+    if($cnx->execute()){
+      return 'ok';
+      // print_r('$data');
+    }
+    else
+    {
+      return 'not ok';
+    }
+
+  }
 }
