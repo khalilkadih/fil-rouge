@@ -13,4 +13,21 @@ class Fournisseurs_Model
             return $fournisseurs = $cnx->fetchAll();
         } 
         
+        //____ Insert Fournisseur ____//
+        static public function Insert_Fournisseur($data)
+        {
+            $cnx = Connection::Connect()->prepare('INSERT INTO fournisseur(name_fournisseur,telephone_fournisseur,adress_fournisseur,observation_fournisseur) 
+            VALUES(:name_fournisseur,:telephone_fournisseur,:adress_fournisseur,:observation_fournisseur)');
+            $cnx->bindParam(':name_fournisseur',$data['name']);
+            $cnx->bindParam(':telephone_fournisseur',$data['telephone']);
+            $cnx->bindParam(':adress_fournisseur',$data['adress']);
+            $cnx->bindParam(':observation_fournisseur',$data['observation']);
+            if($cnx->execute()){
+                return 'ok';
+            }
+            else{
+                echo 'Something Wrong';
+            }
+        
+        }
 }
