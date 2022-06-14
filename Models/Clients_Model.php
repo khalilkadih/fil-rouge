@@ -8,12 +8,28 @@ class Clients_Model{
 
     public static function Get_All_Client()
     {
-       
         $cnx=Connection::Connect()->prepare('select * from client');
         $cnx->execute();
         $clients=$cnx->fetchAll();
         return $clients;
-
+    }
+//_____insert client_____//
+    public static function Insert_Client($data)
+    {
+        $cnx=Connection::Connect()->prepare('INSERT INTO client (name_client,telephone_client,adress_client,observation_client) 
+        VALUES (:nom,:telephone,:adress,:observation)');
+        $cnx->bindParam(':nom',$data['nom']);
+        $cnx->bindParam(':telephone',$data['telephone']);
+        $cnx->bindParam(':adress',$data['adress']);
+        $cnx->bindParam(':observation',$data['observation']);
+        if($cnx->execute()){
+            return 'ok';
+        }
+        else
+        {
+            echo 'Something Wrong';
+        }
 
     }
+
 }
