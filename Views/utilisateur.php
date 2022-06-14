@@ -1,14 +1,25 @@
 <?php
 
-use controllers\User_Controller;
 
 require_once('includes/header.php'); ?>
 
 <?php
 
-$users = new  User_Controller();
-$users = $users->Get_All_Users();
-print_r($users); ?>
+//get all user from db 
+use controllers\User_Controller;
+
+$Allusers = new  User_Controller();
+$users = $Allusers->Get_All_Users();
+// print_r($users);
+
+
+//insert user to db 
+$Insertuser = new User_Controller();
+$Insertuser->InserUser();
+
+
+
+?>
 <main>
     <div class="d-flex" id="dashboard">
         <?php require_once('includes/navigation.php'); ?>
@@ -20,8 +31,6 @@ print_r($users); ?>
                     <i class="fa fa-bars me-3 " id="menu-toggle"></i>
                     <h5>Accueil</h5>
                 </div>
-
-
                 <div class="navbar-nav ms-auto">
                     <div class="nav-item ">
                         <form class="d-flex  justify-content-end mt-3 ">
@@ -31,18 +40,18 @@ print_r($users); ?>
                         </form>
                     </div>
                 </div>
-
             </nav>
             <div class="container-fluid px-4">
                 <div class="row ">
                     <div class=" d-flex justify-content-between my-3">
                         <h1 class="fs-4 ">Liste des Utilisateurs</h1>
                         <div>
-                            <i class="fas fa-sort mx-3  "></i>
-                                 <button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#modalInsertUser">
-                                    Ajouter un utilisateur
-                                </button>
+                            <!-- <i class="fas fa-sort mx-3  "></i> -->
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalInsertUser">
+                                Ajouter un utilisateur
+                            </button>
                         </div>
+                        <!-- <a href="InsertUser" class="btn btn-primary">ajouter user</a> -->
                     </div>
                     <div class=" table-responsive-sm table-responsive-md">
                         <table class="table bg-white rounded shadow-sm align-middle overflow-scroll  table-hover">
@@ -76,42 +85,63 @@ print_r($users); ?>
         </div>
     </div>
     <!--start modals-->
-   <!-- Modal -->
-<div class="modal fade" id="modalInsertUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-          <h1>ajouter un utilisateur</h1>
-            <form action="<?= BASE_URL_WITH_VIEWS ?>/utilisateur.php" method="post">
-                <div class="form-group">
-                    <label for="name">Nom</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Nom">
+    <!-- Modal -->
+    <div class="modal fade" id="modalInsertUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalInsertUser">Add user</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Email">
-                </div>
-                <div class="form-group">
-                    <label for="role">Role</label>
-                    <select class="form-control" id="role" name="role">
-                        <option>admin</option>
-                        <option>user</option>
-                    </select>
-                </div>
-              
-                <button type="submit" class="btn btn-primary">Submit</button>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+                <form method="POST" class="needs-validation" novalidate>
+                    <div class="modal-body">
+                        <h1>ajouter un utilisateur</h1>
+                        <div class="form-group">
+                            <label for="name">Nom</label>
+                            <input type="text" class="form-control" id="name" name="name_user" placeholder="Nom" required>
+                            <div class="invalid-feedback">
+                                You must agree before submitting.
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email_user">Email</label>
+                            <input type="email" class="form-control" id="email_user" name="email_user" placeholder="Email" required>
+                            <div class="invalid-feedback">
+                                You must agree before submitting.
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="role_user">Role</label>
+                            <input type="text" class="form-control" id="role_user" name="role_user" placeholder="role" required>
+                            <div class="invalid-feedback">
+                                You must agree before submitting.
+                            </div>
+                        </div>
+                        <!-- <div class="form-group">
+                            <label for="role_user">Role</label>
+                            <select class="form-control" id="role_user" name="role_user">
+                                <option>admin</option>
+                                <option>user</option>
+                            </select>
+                        </div> -->
+                        <div class="form-group">
+                            <label for="password_user">Password</label>
+                            <input type="password" class="form-control" id="password_user" name="password_user" placeholder="Password" required>
+                            <div class="invalid-feedback">
+                                You must agree before submitting.
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" name="InsertData" class="btn btn-primary">Save data</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-  </div>
-</div> <!--End  modals-->
-<?php require_once('includes/footer.php'); ?>
+
+    <!--End  modals-->
+    <?php require_once('includes/footer.php'); ?>

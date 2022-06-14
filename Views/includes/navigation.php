@@ -2,7 +2,7 @@
     <a href="home" class="logo my-3   d-flex align-items-center">
         <img src="<?= BASE_URL_WITH_VIEWS ?>/img/logo.png" alt="">
         <span>
-            <spam style="color: #e44aec;">Gestion</spam>du stock
+            <spam style="color: #5944f6;">Gestion</spam>du stock
         </span>
     </a>
     <hr class="mb-3 ">
