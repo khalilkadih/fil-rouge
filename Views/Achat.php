@@ -5,7 +5,9 @@ use Controllers\Achat_Controller;
 require_once('includes/header.php');
 $achat=new Achat_Controller();
 $achats=$achat->Get_All_Achat();
+// echo '<pre>';
 //  print_r($achats);
+// echo '</pre>';
 ?>
 <main>
     <div class="d-flex" id="dashboard">
@@ -59,8 +61,8 @@ $achats=$achat->Get_All_Achat();
                                 <!-- (`id_commande_fournisseur`, `id_fournisseur`, `date_commande_fournissuer`,  -->
                                 <!-- `quantite_commande_fournisseur`, `prix_total_commande_fournisseur`, `id_product`)                                                                -->
                                     <td><?= $achat['id_commande_fournisseur']?></td>
-                                    <td><?= $achat['id_product']?></td>
-                                    <td><?= $achat['id_fournisseur']?></td>
+                                    <td><?= $achat['name_product']?></td>
+                                    <td><?= $achat['name_fournisseur']?></td>
                                     <td><?= $achat['quantite_commande_fournisseur']?></td>
                                     <td><?= $achat['prix_total_commande_fournisseur']?></td>
                                     <td><?= $achat['date_commande_fournissuer']?></td>
