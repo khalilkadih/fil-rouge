@@ -34,4 +34,20 @@ class Products_Model
     }
 
   }
+ // _____Delete Product_____
+
+  static public function Delete_Product($id_product)
+  {
+    $id_product=$_POST['id_product'];
+    $cnx=Connection::Connect()->prepare('DELETE FROM product WHERE id_product=:id_product');
+    $cnx->bindParam(':id_product',$id_product);
+    if($cnx->execute()){
+      return 'ok';
+    }
+    else
+    {
+      return 'not ok';
+    }
+
+  }
 }
