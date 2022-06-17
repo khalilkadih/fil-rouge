@@ -18,4 +18,42 @@ class Achats_Model{
 
     }
 
+    //___insert_Achat____///
+    static public function Insert_Achat($data)
+    {
+      
+        $cnx=Connection::Connect()->prepare('INSERT INTO commande_fournisseur(id_commande_fournisseur,id_product,id_fournisseur,quantite_commande_fournisseur,prix_total_commande_fournisseur,date_commande_fournissuer)
+         VALUES(:references_achat,:id_product,:id_fournisseur,:quantite_commande_fournisseur,:prix_total_commande_fournisseur,:date_commande_fournissuer)');
+        $cnx->bindParam(':references_achat',$data['references_achat']);
+        $cnx->bindParam(':id_product',$data['id_product']);
+        $cnx->bindParam(':id_fournisseur',$data['id_fournisseur']);
+        $cnx->bindParam(':quantite_commande_fournisseur',$data['quantite_commande_fournisseur']);
+        $cnx->bindParam(':prix_total_commande_fournisseur',$data['prix_total_commande_fournisseur']);
+        $cnx->bindParam(':date_commande_fournissuer',$data['date_commande_fournissuer']);
+
+        if($cnx->execute())
+        {
+            return 'ok';
+        }
+        else{
+            echo 'Something went wrong';
+        }
+        
+    }
+
+    //____________Delte Achat____________
+    static public function Delete_Achat($id_commande_fournisseur)
+    {
+        
+            $cnx=Connection::Connect()->prepare('DELETE FROM commande_fournisseur WHERE id_commande_fournisseur=:id_commande_fournisseur');
+            $cnx->bindParam(':id_commande_fournisseur',$id_commande_fournisseur);
+            if($cnx->execute()){
+                return 'ok';
+            }
+            else{
+                echo 'Something went wrong';
+            }
+    
+    }
+
 }
