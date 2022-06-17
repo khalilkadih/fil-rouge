@@ -36,4 +36,25 @@ class Client_Controller
             }
         }
     }
+    //______Delete Client_________________
+    public function Delete_Client()
+    {
+        if(isset($_POST['id_client'])){
+
+            $id_client=$_POST['id_client'];
+
+            $clientDeleted=Clients_Model::Delete_Client($id_client);
+            if($clientDeleted=='ok'){
+                Session::Set('success','Client Deleted Successfully');
+                header('location:' . BASE_URL . 'Clients');
+            }
+            else{
+                echo 'Something Wrong';
+
+            }
+            
+        }
+
+    }
 }
+
