@@ -35,5 +35,21 @@ class Fournisseur_Controller{
             
           
         }
-    }    
+    }   
+    
+   // _____Delete Fournisseur_____
+    public function Delete_Fournisseur(){
+        if(isset($_POST['id_fournisseur']))
+        {
+            $id_fournisseur=$_POST['id_fournisseur'];
+            $fournisseurs=Fournisseurs_Model::Delete_Fournisseur($id_fournisseur);
+            if ($fournisseurs == 'ok') {
+                echo 'Deleted successfully';
+                Session::Set('succes', 'Product Deleted Successfully');
+                header('location:' . BASE_URL.'fournisseurs');
+            } else {
+                echo "insertion echouée";
+            }
+        }
+    }
 }
