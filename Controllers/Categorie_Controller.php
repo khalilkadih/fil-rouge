@@ -13,4 +13,13 @@ class Categorie_Controller{
         return $categorie;
     }
 
+    ///____________Delte Categorie____________
+
+    public function Delete_Categorie($id_categorie)
+    {
+        if(isset($id_categorie)){
+            Categories_Model::Delete_Categorie($id_categorie);
+        }
+    }
+
 }
