@@ -13,4 +13,13 @@ class Categories_Model
         $categorie=$cnx->fetchAll();
         return $categorie;
     }
+
+
+    // _____Delete Categorie_____
+    static public function Delete_Categorie($id_categorie)
+    {
+        $cnx=Connection::Connect()->prepare("DELETE FROM categorie WHERE id_categorie=:id_categorie");
+        $cnx->bindParam(':id_categorie',$id_categorie);
+        $cnx->execute();
+    }
 }
