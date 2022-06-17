@@ -36,13 +36,34 @@ class Product_Controller
             if ($product == 'ok') {
 
                 echo 'Inserted successfully';
-                 Session::Set('succes', 'Product Added Successfully');
+                 Session::Set('success', 'Product Added Successfully');
                 header('location:' . BASE_URL.'produit');
             } else {
                 echo "insertion echouée";
             }
         }
     }     
+
+
+    // _____Delete Product_____
+
+    public function DeleteProduct()
+    {
+       
+        
+        if (isset($_POST['id_product'])) {
+            print_r($_POST['id_product']);
+            $id_product = $_POST['id_product'];
+            $product = Products_Model::Delete_Product($id_product);
+            if ($product == 'ok') {
+                echo 'Deleted successfully';
+                Session::Set('success', 'Product Deleted Successfully');
+                header('location:' . BASE_URL.'produit');
+            } else {
+                echo "insertion echouée";
+            }
+        }
+    }
 }
 
 
