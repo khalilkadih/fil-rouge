@@ -30,4 +30,16 @@ class Fournisseurs_Model
             }
         
         }
+        //_______Delete Fournisseur_______
+        static public function Delete_Fournisseur($id_fournisseur)
+        {
+            $cnx = Connection::Connect()->prepare('DELETE FROM fournisseur WHERE id_fournisseur=:id_fournisseur');
+            $cnx->bindParam(':id_fournisseur',$id_fournisseur);
+            if($cnx->execute()){
+                return 'ok';
+            }
+            else{
+                echo 'Something Wrong';
+            }
+        }
 }
