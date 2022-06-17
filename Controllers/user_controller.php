@@ -3,6 +3,7 @@
 namespace controllers;
 
 use Models\Users_Model;
+use Redirect\Redirect;
 use Session;
 
 class User_Controller
@@ -33,7 +34,7 @@ class User_Controller
             print_r($data);
             $user = Users_Model::InserUser($data);
             if ($user == 'ok') {
-                Session::Set('succes', 'Employer Added Successfully');
+                Session::Set('success', 'Employer Added Successfully');
                 header('location:' . BASE_URL . 'utilisateur');
             } else {
                 echo "insertion echouée";
@@ -52,7 +53,7 @@ class User_Controller
             );
             $user = Users_Model::UpdateUser($id, $data);
             if ($user == 'ok') {
-                Session::Set('succes', 'Employer Updated Successfully');
+                Session::Set('success', 'Employer Updated Successfully');
                 header('location:' . BASE_URL);
             } else {
                 echo "insertion echouée";
@@ -68,8 +69,8 @@ class User_Controller
             $id_user = $_POST['id_user'];
             $user = Users_Model::DeleteUser($id_user);
             if ($user == 'ok') {
-                Session::Set('succes', 'Employer Deleted Successfully');
-                header('location: utilisateur');
+                Session::Set('success', 'Employer Deleted Successfully');
+                Redirect::to(BASE_URL . 'utilisateur');
             } else {
                 echo "insertion echouée";
             }
