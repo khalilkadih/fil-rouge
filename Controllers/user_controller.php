@@ -23,8 +23,7 @@ class User_Controller
     //inset user
     public function InserUser()
     {
-        if (isset($_POST['InsertData'])) 
-        {
+        if (isset($_POST['InsertData'])) {
             $data = array(
                 'name_user' => $_POST['name_user'],
                 'role_user' => $_POST['role_user'],
@@ -35,7 +34,7 @@ class User_Controller
             $user = Users_Model::InserUser($data);
             if ($user == 'ok') {
                 Session::Set('succes', 'Employer Added Successfully');
-                header('location:' . BASE_URL.'utilisateur');
+                header('location:' . BASE_URL . 'utilisateur');
             } else {
                 echo "insertion echouée";
             }
@@ -61,14 +60,19 @@ class User_Controller
         }
     }
     //delete user
-    public function DeleteUser($id)
+    public function DeleteUser()
     {
-        $user = Users_Model::DeleteUser($id);
-        if ($user == 'ok') {
-            Session::Set('succes', 'Employer Deleted Successfully');
-            header('location:' . BASE_URL);
-        } else {
-            echo "insertion echouée";
+        
+        if (isset($_POST['id_user'])) 
+        {
+            $id_user = $_POST['id_user'];
+            $user = Users_Model::DeleteUser($id_user);
+            if ($user == 'ok') {
+                Session::Set('succes', 'Employer Deleted Successfully');
+                header('location: utilisateur');
+            } else {
+                echo "insertion echouée";
+            }
         }
     }
 }
