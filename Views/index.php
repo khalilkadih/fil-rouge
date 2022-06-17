@@ -1,4 +1,17 @@
-    <!DOCTYPE html>
+<?php
+
+use Controllers\Login_Controller;
+
+if (isset($_POST['submit'])) {
+  echo'hello';
+  $login = new Login_Controller();
+  $login->Login();
+}
+
+
+?>
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -24,7 +37,7 @@
         </div>
 
 
-        <form>
+        <form method="POST">
 
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Email </label>
@@ -34,7 +47,7 @@
             <label for="exampleInputPassword1" class="form-label">Password</label>
             <input type="password" class="form-control mb-4" placeholder="Entre your password" id="exampleInputPassword1">
           </div>
-          <button type="button" onclick="window.location.href='<?= BASE_URL ?>home';" class="btn  btn-primary w-100 text-white text-uppercase  ">
+          <button type="submit" name="submit" class="btn  btn-primary w-100 text-white text-uppercase  ">
             sign in
           </button>
           <div class="mt-2 text-center">
@@ -49,11 +62,6 @@
       </div>
     </div>
   </main>
-
-
-
-
-
 </body>
 
 </html>

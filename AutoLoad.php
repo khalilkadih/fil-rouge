@@ -3,6 +3,7 @@
 session_start();
 include_once('Constant.php');
 include_once('./app/Redirect.php');
+include_once('Views/includes/Alert.php');
 
 require_once('database/connection.php');
 spl_autoload_register(function($className)

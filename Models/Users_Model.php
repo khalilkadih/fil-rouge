@@ -67,15 +67,18 @@ class Users_Model
 
     }
     //delete user
-    static public function DeleteUser($id){
-        $stat=Connection::Connect()->prepare('DELETE FROM user WHERE id_user = :id_user');
-        $stat->bindParam(':id_user', $id);
-        if($stat->fetch()){
+    static public function DeleteUser($id_user){
+
+        $stmt=Connection::Connect()->prepare('DELETE FROM user WHERE id_user = :id_user');
+        $stmt->bindParam(':id_user', $id_user);
+        if($stmt->execute())
+        {
             return 'ok';
         }
-        else
+        else 
         {
-            return 'not ok';
+            return 'Something went wrong';
         }
+       
     }
 }

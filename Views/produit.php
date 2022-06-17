@@ -3,12 +3,21 @@
 use Controllers\Categorie_Controller;
 use controllers\Product_Controller;
 
+if(isset($_POST['search'])){
+
+    $find_product = new Product_Controller();
+    $find=$find_product->find_product();
+}else{
+
+
 $product = new Product_Controller();
 $results = $product->Get_All_Product();
 $product->InserProduct();
+$product->DeleteProduct();
 //get all categorie
 $categorie = new Categorie_Controller();
 $categories = $categorie->Get_All_Categorie();
+}
 ?>
 <?php require_once("includes/header.php"); ?>
 <main>
@@ -24,12 +33,22 @@ $categories = $categorie->Get_All_Categorie();
                 </div>
 
 
-                <div class="navbar-nav ms-auto">
+                <div class="navbar-nav ms-auto d-flex">
                     <div class="nav-item ">
-                        <form class="d-flex  justify-content-end mt-3 ">
-                            <input class="form-control me-2 " type="search" placeholder="Search..." aria-label="Search">
-                            <a href="./profile.html" class="mx-3 "> <img src="<?= BASE_URL_WITH_VIEWS ?>/img/user (1).png" class="mx-3 w-75"></a>
+
+                        <form  metod="POST" class="d-flex  justify-content-end mt-3 ">
+                            <input class="form-control me-2 "  name="search" type="search" placeholder="Search..." aria-label="Search">
+                            <button class="btn btn-info btn-sm" name="search" type="submit">
+                                <i class="fa fa-search"></i>
+                            </button>
                         </form>
+
+
+
+                    </div>
+                    <div>
+                        <a href="<?= BASE_URL_WITH_VIEWS ?>/utilisateur" class="mx-3 "> <img src="<?= BASE_URL_WITH_VIEWS ?>/img/user (1).png" class="mx-3 w-75"></a>
+
                     </div>
                 </div>
 
@@ -44,6 +63,7 @@ $categories = $categorie->Get_All_Categorie();
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalInsertProduct">
                                     Ajouter un Produit
                                 </button>
+
                             </div>
                         </div>
 
@@ -57,7 +77,8 @@ $categories = $categorie->Get_All_Categorie();
                                         <th>Prix d'achat </th>
                                         <th>prix de vente</th>
                                         <th>categorie name</th>
-                                        <th class="text-center"> Action</th>
+                                        <th class="text-center"> Edit</th>
+                                        <th class="text-center"> Delete</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -70,8 +91,23 @@ $categories = $categorie->Get_All_Categorie();
                                             <td><?= $result['prix_vente'] ?></td>
                                             <td><?= $result['name_categorie'] ?></td>
                                             <td class="text-center">
-                                                <a href="<?= BASE_URL_WITH_VIEWS ?>/product/edit?id=<?= $result['id_product'] ?>" class="btn btn-primary">Edit</a>
-                                                <a href="<?= BASE_URL_WITH_VIEWS ?>/product/delete?id=<?= $result['id_product'] ?>" class="btn btn-danger">Delete</a>
+                                                <form method="POST">
+                                                    <input type="hidden" name="id" value="<?php echo ($result['id_product']) ?>">
+                                                    <button class="btn btn-sm btn-warning ">
+                                                        <i class="fa fa-edit"></i>Edit
+                                                    </button>
+                                                </form>
+                                            </td>
+                                            <td>
+                                                <form method="POST" class="mx-2 confirm">
+
+                                                    <input type="hidden" name="id_product" value="<?php echo ($result['id_product']) ?>">
+                                                    <button type="submit" name="deleteProduct" class="btn btn-sm btn-danger confirm ">
+
+                                                        <i class="fa fa-edit"></i>
+                                                        Delete
+                                                    </button>
+                                                </form>
                                             </td>
                                         </tr>
 
@@ -137,17 +173,17 @@ $categories = $categorie->Get_All_Categorie();
                             </div>
                         </div> -->
                         <div class="form-group">
-                        
+
                             <label for="categorie"> chose categorie:</label>
-                                <select class="form-control" id="id_categorie" name="categorie" required>
-                                    <option value="">chose categorie:</option>
-                                    <?php foreach ($categories as $categorie) { ?>
-                                        <option value="<?= $categorie['id_categorie']?>">
-                                             <?= $categorie['name_categorie']?>
-                                        </option>
-                                    <?php } ?>
-                                </select>
-                            
+                            <select class="form-control" id="id_categorie" name="categorie" required>
+                                <option value="">chose categorie:</option>
+                                <?php foreach ($categories as $categorie) { ?>
+                                    <option value="<?= $categorie['id_categorie'] ?>">
+                                        <?= $categorie['name_categorie'] ?>
+                                    </option>
+                                <?php } ?>
+                            </select>
+
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

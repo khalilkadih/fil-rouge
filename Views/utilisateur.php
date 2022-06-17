@@ -1,9 +1,7 @@
 <?php
 
 
-require_once('includes/header.php'); ?>
-
-<?php
+require_once('includes/header.php');
 
 //get all user from db 
 use controllers\User_Controller;
@@ -16,9 +14,7 @@ $users = $Allusers->Get_All_Users();
 //insert user to db 
 $Insertuser = new User_Controller();
 $Insertuser->InserUser();
-
-
-
+$Insertuser->DeleteUser();
 ?>
 <main>
     <div class="d-flex" id="dashboard">
@@ -59,10 +55,10 @@ $Insertuser->InserUser();
                                 <tr>
                                     <th> id</th>
                                     <th>full name</th>
-                                    <th>Role</th>
+                                    <th>Poste</th>
                                     <th>Email</th>
-                                    <th></th>
-                                    <th></th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
                                 </tr>
                             </thead>
                             <?php foreach ($users as $user) { ?>
@@ -72,10 +68,30 @@ $Insertuser->InserUser();
                                         <td><?php echo $user['name_user']; ?></td>
                                         <td><?php echo $user['role_user']; ?></td>
                                         <td><?php echo $user['email_user']; ?></td>
-                                        <td> <i class="fas fa-pen mx-4 "></i></td>
-                                        <td> <i class="fas fa-trash  "></i></td>
-                                    </tr>
+                                        <td>
+                                            <form action="" method="POST">
 
+                                                <input type="hidden" name="id_user" value="<?php echo ($user['id_user']) ?>">
+                                                <button class="btn btn-sm btn-warning ">
+                                                    <i class="fa fa-edit"></i>Edit
+                                                </button>
+                                            </form>
+                                        </td>
+                                        <td>
+                                            <form method="POST" class="mx-2 confirm">
+
+                                                <input type="hidden" name="id_user" value="<?php echo ($user['id_user']) ?>">
+                                                <button type="submit" name="deleteUser" class="btn btn-sm btn-danger confirm ">
+
+                                                    <i class="fa fa-edit"></i>
+                                                    Delete
+                                                </button>
+                                            </form>
+
+
+                                        </td>
+
+                                    </tr>
                                 </tbody>
                             <?php } ?>
                         </table>
@@ -113,19 +129,13 @@ $Insertuser->InserUser();
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="role_user">Role</label>
-                            <input type="text" class="form-control" id="role_user" name="role_user" placeholder="role" required>
+                            <label for="role_user">Poste</label>
+                            <input type="text" class="form-control" id="role_user" name="role_user" placeholder="Entrer le poste" required>
                             <div class="invalid-feedback">
                                 You must agree before submitting.
                             </div>
                         </div>
-                        <!-- <div class="form-group">
-                            <label for="role_user">Role</label>
-                            <select class="form-control" id="role_user" name="role_user">
-                                <option>admin</option>
-                                <option>user</option>
-                            </select>
-                        </div> -->
+
                         <div class="form-group">
                             <label for="password_user">Password</label>
                             <input type="password" class="form-control" id="password_user" name="password_user" placeholder="Password" required>
@@ -145,3 +155,6 @@ $Insertuser->InserUser();
 
     <!--End  modals-->
     <?php require_once('includes/footer.php'); ?>
+
+
+   

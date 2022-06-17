@@ -10,7 +10,8 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="<?= BASE_URL_WITH_VIEWS ?>/includes/config.js"></script>
 <script>
     var el = document.getElementById("dashboard");
     var toggleButton = document.getElementById("menu-toggle");
@@ -147,18 +148,24 @@
     //start Modal
 
     // ---------------------------------Satart Delete-------------------------------------------
-    //     $(document).ready(function(){
+        // $(document).ready(function () {
 
-    // $('.deletebtn').on('click', function () 
-    // {
-    //      $('#deletemodal').modal('show');
+        //     $('.deleteVente').on('click', function () {
 
-    //      $tr = $(this).closest('tr');
-    //      let contactId = $tr.children("td")[0].innerText;
-    //      $('#deletemodal input').val(contactId);
-    //      console.log('delete user with id '+contactId);
-    // });
-    // });
+        //         $('#DeleteVente').modal('show');
+
+        //         $tr = $(this).closest('tr');
+
+        //         var data = $tr.children("td").map(function () {
+        //             return $(this).text();
+        //         }).get();
+
+        //         console.log(data);
+
+        //         $('#delete_id').val(data[0]);
+
+        //     });
+        // });
     // ----------------------------End Delete --------------------------------------------------
 
     // ------------------------ stat edit Modal------------------------------------------------------

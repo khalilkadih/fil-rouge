@@ -7,6 +7,7 @@ require_once('includes/header.php');
 $fournisseur = new Fournisseur_Controller();
 $fournisseurs = $fournisseur->Get_All_Fournisseur();
 $fournisseur->Insert_Fournisseur();
+$fournisseur->Delete_Fournisseur();
 // print_r($fournisseurs);
 ?>
 
@@ -57,7 +58,8 @@ $fournisseur->Insert_Fournisseur();
                                         <th>Observation </th>
                                         <!-- <th>solde non payé</th>
                                             <th>Produit Fournit</th> -->
-                                        <th class="text-center"> Action</th>
+                                        <th class=""> Edit</th>
+                                        <th class=""> Delete</th>   
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -69,20 +71,21 @@ $fournisseur->Insert_Fournisseur();
                                             <td><?= $fournisseur['telephone_fournisseur'] ?></td>
                                             <td><?= $fournisseur['adress_fournisseur'] ?></td>
                                             <td><?= $fournisseur['observation_fournisseur'] ?></td>
+                                            <td>
+                                                <form class="confirm" method="POST">
+                                                    <input type="hidden" name="id_fournisseur" value="<?= $fournisseur['id_fournisseur'] ?>">
+                                                    <button type="submit" name="delete_fournisseur" class="btn btn-danger">EDIT</button>
 
-                                            <td class="text-center">
-                                                <a href="<?= BASE_URL_WITH_VIEWS ?>/fournisseur.php?id=<?= $fournisseur['id_fournisseur'] ?>" class="btn btn-primary">
-                                                    <i class="fa fa-eye"></i>
-                                                </a>
-                                                <a href="<?= BASE_URL_WITH_VIEWS ?>/fournisseur.php?id=<?= $fournisseur['id_fournisseur'] ?>" class="btn btn-primary">
-                                                    <i class="fa fa-edit"></i>
-                                                </a>
-                                                <a href="<?= BASE_URL_WITH_VIEWS ?>/fournisseur.php?id=<?= $fournisseur['id_fournisseur'] ?>" class="btn btn-primary">
-                                                    <i class="fa fa-trash"></i>
-                                                </a>
+                                                </form>
+                                            </td>
+                                            <td>
+                                                <form method="POST" class="confirm">
+                                                    <input type="hidden" name="id_fournisseur" value="<?= $fournisseur['id_fournisseur'] ?>">
+                                                    <button type="submit" name="id_fournisseur" class="btn btn-primary">Delete</button>
+                                                </form>
 
-                                                <!-- <td> <i class="fas fa-pen mx-4 "></i></td>
-                                            <td> <i class="fas fa-trash  "></i></td> -->
+                                            </td>
+                                            
                                         </tr>
                                 </tbody>
                             <?php endforeach; ?>

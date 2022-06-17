@@ -7,8 +7,27 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="text-center">
-        <h1>you are in Error Page</h1>
+    <!-- create page Error 404 -->
+    <div class="container">
+        <div class="row mt-4">
+            <div class="col-md-10 mx-auto">
+                <div class="card-body">
+                    <div class="text-center p-5 rounded bg-secondary">
+                        <h3 class="text-white">
+                            Page Introuvable
+                        </h3>
+
+                        <a  class="btn btn-outline-secondary text-white" href="<?= BASE_URL.'home'?>">Home</a>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
     </div>
 </body>
 </html>

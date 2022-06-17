@@ -1,15 +1,39 @@
 <?php
 
 use Controllers\Vente_Controller;
+use Controllers\Product_Controller;
+use Controllers\Fournisseur_Controller;
+use Controllers\Categorie_Controller;
+use Controllers\Client_Controller;
+
+require_once('includes/header.php');
+
+$product = new Product_Controller();
+$products = $product->Get_All_Product();
+$fournisseur = new Fournisseur_Controller();
+$fournisseurs = $fournisseur->Get_All_Fournisseur();
+$categorie = new Categorie_Controller();
+$categories = $categorie->Get_All_Categorie();
+$client = new Client_Controller();
+$clients = $client->Get_All_Client();
 
 require_once('includes/header.php');
 
 $vente = new Vente_Controller();
-$ventes = $vente->Get_All_Vente();
-// echo '<pre>';
-// print_r($ventes);
-// echo '</pre>';
 
+$ventes = $vente->Get_All_Vente();
+
+if(isset($_POST['insertVente'])){ 
+    $vente->Insert_Vente();
+
+}
+
+
+if(isset($_POST['deleteVente'])){ 
+
+    $vente->Delete_Vente();
+
+}
 
 ?>
 
@@ -41,8 +65,10 @@ $ventes = $vente->Get_All_Vente();
                     <div class=" d-flex justify-content-between my-3">
                         <h1 class="fs-4 ">Liste des achats</h1>
                         <div>
-                            <i class="fas fa-sort mx-3  "></i>
-                            <a href="./ajouterEtudiant.html"> <button type="button" class="btn fw-bold  fs-6" style="background:#DD10C9 ; color: #012970;">Ajouter une achat</button></a>
+                            <!-- <i class="fas fa-sort mx-3  "></i> -->
+                            <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#modalInsertVente">
+                                Ajouter une Vente
+                            </button>
                         </div>
                     </div>
                     <div class=" table-responsive-sm table-responsive-md">
@@ -53,6 +79,7 @@ $ventes = $vente->Get_All_Vente();
                                     <th>produit</th>
                                     <th>client acheter</th>
                                     <th>Quantite vente</th>
+                                    <th>Categorie</th>
                                     <th>Prix de vente</th>
                                     <th>Date de vente</th>
                                     <th></th>
@@ -61,42 +88,36 @@ $ventes = $vente->Get_All_Vente();
                             </thead>
                             <tbody>
 
-                                <?php foreach ($ventes as $vente)
-                                 { ?>
+                                <?php foreach ($ventes as $vente) { ?>
                                     <tr>
-
                                         <td><?= $vente['id_commande_client'] ?></td>
                                         <td><?= $vente['name_product'] ?></td>
                                         <td><?= $vente['name_client'] ?></td>
+                                        <?php foreach ($categories as $cat) { ?>
+                                            <td><?= $cat['name_categorie'] ?></td>
+                                        <?php } ?>
                                         <td><?= $vente['quantite_commande_client'] ?> pieces</td>
                                         <td><?= $vente['prix_total_commande_client'] ?> DHs</td>
                                         <td><?= $vente['date_commande_client'] ?></td>
                                         <td class="d-flex flex-row ">
-   
-                                        <form action="" method="POST">
+                                            <form action="" method="POST">
 
                                                 <input type="hidden" name="id" value="<?php echo ($vente['id_commande_client']) ?>">
                                                 <button class="btn btn-sm btn-warning ">
                                                     <i class="fa fa-edit"></i>Edit
                                                 </button>
                                             </form>
+                                            <form method="POST" class="mx-2 confirm">
 
-                                            <form action="DeleteVente" method="POST" class="mx-2">
-
-                                                <input type="hidden" name="id" value="<?php echo ($vente['id_commande_client']) ?>">
-                                                <button class="btn btn-sm btn-danger ">
+                                                <input type="hidden" name="id_commande_client" value="<?php echo ($vente['id_commande_client']) ?>">
+                                                <button type="submit" name="deleteVente" class="btn btn-sm btn-danger confirm ">
 
                                                     <i class="fa fa-edit"></i>
                                                     Delete
                                                 </button>
-
-
-
                                             </form>
-
                                         </td>
                                     </tr>
-
                             </tbody>
                         <?php } ?>
 
@@ -106,6 +127,103 @@ $ventes = $vente->Get_All_Vente();
             </div>
         </div>
     </div>
+    <!-- __________________________________________Start Model Vente_________________________________________________________ -->
 
+    <div class="modal fade" id="modalInsertVente" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalInsertVente">Add Vente</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="POST" class="needs-validation" novalidate>
+                    <div class="modal-body">
+                        <h1>ajouter un Client</h1>
+
+                        <div class="form-group">
+                            <label for="id_commande_client">reference Vente</label>
+                            <input type="text" class="form-control" id="id_commande_client" name="id_commande_client" placeholder="reference Vente" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Please provide a valid reference Vente.
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="id_client">Client</label>
+                            <select class="form-control" id="id_client" name="id_client" required>
+                                <option value="">Select Client</option>
+                                <?php foreach ($clients as $client) { ?>
+                                    <option value="<?= $client['id_client'] ?>"><?= $client['name_client'] ?></option>
+                                <?php } ?>
+                            </select>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Please provide a valid Client.
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="id_product">Produit</label>
+                            <select class="form-control" id="id_product" name="id_product" required>
+                                <option value="">Select Produit</option>
+                                <?php foreach ($products as $product) { ?>
+                                    <option value="<?= $product['id_product'] ?>"><?= $product['name_product'] ?></option>
+                                <?php } ?>
+                            </select>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Please provide a valid Produit.
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="quantite_commande_client">Quantite Vente</label>
+                            <input type="text" class="form-control" id="quantite_commande_client" name="quantite_commande_client" placeholder="Quantite Vente" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Please provide a valid Quantite Vente.
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="prix_total_commande_client">Prix Vente</label>
+                            <input type="text" class="form-control" id="prix_total_commande_client" name="prix_total_commande_client" placeholder="Prix Vente" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Please provide a valid Prix Vente.
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="date_commande_client">Date Vente</label>
+                            <input type="date" class="form-control" id="date_commande_client" name="date_commande_client" placeholder="Date Vente" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Please provide a valid Date Vente.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" name="insertVente" class="btn btn-primary">Save data</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <!-- _____________________________________________End Model Vente_________________________________________________________ -->
+    <!-- _______________________________________________________End Modal Vente__________________________________________ -->
 
     <?php require_once('includes/footer.php'); ?>
