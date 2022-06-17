@@ -101,13 +101,7 @@ $categories = $categorie->Get_All_Categorie();
                                             <td class="prix_vente"><?= $result['prix_vente'] ?></td>
                                             <td class="name_categorie"><?= $result['name_categorie'] ?></td>
                                             <td class="text-center">
-                                                <!-- <form method="POST">
-                                                    <input type="hidden" name="id" value="<?php echo ($result['id_product']) ?>">
-                                                    <button class="btn btn-sm btn-warning modalUpdateProduct " data-toggle="modal" data-target="#modalUpdateProduct">
-                                                        <i class="fa fa-edit"></i>
-                                                        Edit
-                                                    </button>
-                                                </form> -->
+                                            
                                                 <a href="#" class="btn btn-sm btn-warning modalUpdateProduct ">
                                                     <i class="fa fa-edit"></i>
                                                     Edit

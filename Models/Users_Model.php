@@ -49,15 +49,15 @@ class Users_Model
 
     static public function UpdateUser($data){
 
-        $stat=Connection::Connect()->prepare('UPDATE user 
-        SET name_user = :name_user, role_user = :role_user, email_user = :email_user, password_user = :password_user 
+        
+        $stat=Connection::Connect()->prepare('UPDATE user SET name_user = :name_user, role_user = :role_user, email_user = :email_user 
         WHERE id_user = :id_user');
+        $stat->bindParam(':id_user', $data['id_user']);
         $stat->bindParam(':name_user', $data['name_user']);
         $stat->bindParam(':role_user', $data['role_user']);
         $stat->bindParam(':email_user', $data['email_user']);
-        $stat->bindParam(':password_user', $data['password_user']);
-        $stat->bindParam(':id_user', $data['id_user']);
-        if($stat->fetch()){
+        
+        if($stat->execute()){
             return 'ok';
         }
         else

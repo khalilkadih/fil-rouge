@@ -64,9 +64,9 @@ class User_Controller
     public function DeleteUser()
     {
         
-        if (isset($_POST['id_user'])) 
+        if (isset($_GET['id_user'])) 
         {
-            $id_user = $_POST['id_user'];
+            $id_user = $_GET['id_user'];
             $user = Users_Model::DeleteUser($id_user);
             if ($user == 'ok') {
                 Session::Set('success', 'Employer Deleted Successfully');
@@ -75,5 +75,29 @@ class User_Controller
                 echo "insertion echouée";
             }
         }
+    }
+    //update user
+
+    public function update_user(){
+
+        if(isset($_POST['updateUser'])){
+            $data = array(
+                'id_user' => $_POST['id_user'],
+                'name_user' => $_POST['name_user'],
+                'role_user' => $_POST['role_user'],
+                'email_user' => $_POST['email_user'],
+               
+            );
+            $user = Users_Model::UpdateUser($data);
+            if($user =='ok'){
+                Session::Set('success', 'Employer Updated Successfully');
+                Redirect::to(BASE_URL . 'utilisateur');
+            }
+            else{
+                echo "update echouée";
+            }
+        }
+        else
+        echo 'you outsid function update user';
     }
 }

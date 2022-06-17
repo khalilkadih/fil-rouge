@@ -15,6 +15,14 @@ $users = $Allusers->Get_All_Users();
 $Insertuser = new User_Controller();
 $Insertuser->InserUser();
 $Insertuser->DeleteUser();
+
+if(isset($_POST['updateUser'])){
+    $updateUser = new User_Controller();
+   $updateUser->update_user();
+    echo 'we are here '; 
+   print_r($_POST);
+}
+
 ?>
 <main>
     <div class="d-flex" id="dashboard">
@@ -63,31 +71,22 @@ $Insertuser->DeleteUser();
                             </thead>
                             <?php foreach ($users as $user) { ?>
                                 <tbody>
-                                    <tr>
-                                        <td><?php echo $user['id_user']; ?></td>
-                                        <td><?php echo $user['name_user']; ?></td>
-                                        <td><?php echo $user['role_user']; ?></td>
-                                        <td><?php echo $user['email_user']; ?></td>
+                                    <tr class="item">
+                                        <td class="id_user"><?php echo $user['id_user']; ?></td>
+                                        <td class="name_user"><?php echo $user['name_user']; ?></td>
+                                        <td class="role_user"><?php echo $user['role_user']; ?></td>
+                                        <td class="email_user"><?php echo $user['email_user']; ?></td>
                                         <td>
-                                            <form action="" method="POST">
 
-                                                <input type="hidden" name="id_user" value="<?php echo ($user['id_user']) ?>">
-                                                <button class="btn btn-sm btn-warning ">
-                                                    <i class="fa fa-edit"></i>Edit
-                                                </button>
-                                            </form>
+                                            <a href="#" class="btn btn-sm btn-warning modalUpdateUser">
+                                                <i class="fa fa-edit"></i>Edit
                                         </td>
                                         <td>
-                                            <form method="POST" class="mx-2 confirm">
 
-                                                <input type="hidden" name="id_user" value="<?php echo ($user['id_user']) ?>">
-                                                <button type="submit" name="deleteUser" class="btn btn-sm btn-danger confirm ">
-
-                                                    <i class="fa fa-edit"></i>
-                                                    Delete
-                                                </button>
-                                            </form>
-
+                                            <a class="btn btn-sm btn-danger confirm" href="<?= BASE_URL ?>utilisateur?updateUser=1&id_user=<?= $user['id_user']?>">
+                                                <i class="fa fa-edit"></i>
+                                                Delete
+                                            </a>
 
                                         </td>
 
@@ -154,7 +153,85 @@ $Insertuser->DeleteUser();
     </div>
 
     <!--End  modals-->
+    <!-- _______________________________________________start update user___________________________ -->
+    <div class="modal fade" id="modalUpdateUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalUpdateUser">Add user</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="$(this).closest('.modal').modal('hide')">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="POST" class="needs-validation" novalidate>
+                    <div class="modal-body">
+                        <h1>Modifie un utilisateur</h1>
+                        <div class="form-group">
+                            <input type="hidden" name="id_user" value="<?=$user['id_user']?>">
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Nom</label>
+                            <input type="text" class="form-control" id="name" name="name_user" placeholder="Nom" required>
+                            <div class="invalid-feedback">
+                                You must agree before submitting.
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email_user">Email</label>
+                            <input type="email" class="form-control" id="email_user" name="email_user" placeholder="Email" required>
+                            <div class="invalid-feedback">
+                                You must agree before submitting.
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="role_user">Poste</label>
+                            <input type="text" class="form-control" id="role_user" name="role_user" placeholder="Entrer le poste" required>
+                            <div class="invalid-feedback">
+                                You must agree before submitting.
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="$(this).closest('.modal').modal('hide')">Close</button>
+                            <button type="submit" name="updateUser" class="btn btn-primary">Save data</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- ___________________________________________End update user___________________________ -->
+
     <?php require_once('includes/footer.php'); ?>
+    <script>
+        //to show modal 
+        document.querySelectorAll('.modalUpdateUser').forEach(btn => {
+
+            btn.addEventListener('click', e => {
+                let item = e.target.closest('.item');
+                const modal = document.querySelector('#modalUpdateUser');
+                console.log(item);
+                console.log(modal);
+                $("#modalUpdateUser").modal('show')
+            });
+            //to update data 
+            document.querySelectorAll('.modalUpdateUser').forEach(btn => {
+
+                btn.addEventListener('click', e => {
+                    let item = e.target.closest('.item');
+                    const modal = document.querySelector('#modalUpdateUser');
+                    console.log(item);
+                    console.log(modal);
+                    modal.querySelectorAll('input').forEach(input => {
+                        input.value = item.getElementsByClassName(input.name)[0].innerText;
+                    })
+                    $("#modalUpdateUser").modal('show')
+
+                });
+
+            })
 
 
-   
+
+        })
+    </script>
