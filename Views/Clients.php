@@ -6,7 +6,7 @@ require_once('includes/header.php');
 $client = new Client_Controller();
 $clients = $client->Get_All_Client();
 $client->Insert_Client();
-// print_r($clients);
+$client->Delete_Client();
 
 ?>
 
@@ -56,7 +56,9 @@ $client->Insert_Client();
                                         <th>Telephone</th>
                                         <th>Adress</th>
                                         <th>Observation </th>
-                                        <th class="text-center"> Action</th>
+                                        <th class=""> Edit</th>
+                                        <th class=""> Delete</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -67,19 +69,28 @@ $client->Insert_Client();
                                             <td><?= $client['telephone_client'] ?></td>
                                             <td><?= $client['adress_client'] ?></td>
                                             <td><?= $client['observation_client'] ?></td>
+                                            <td>
+                                                <form method="POST" class="confirm">
 
+                                                    <input type="hidden" name="id_client" value="<?php echo ($client['id_client']) ?>">
+                                                    <button class="btn btn-sm btn-warning ">
+                                                        <i class="fa fa-edit"></i>Edit
+                                                    </button>
 
-                                            <td class="text-center">
-                                                <a href="<?= BASE_URL_WITH_VIEWS ?>/profile.php" class="btn btn-primary btn-sm">
-                                                    <i class="fa fa-eye"></i>
-                                                </a>
-                                                <a href="<?= BASE_URL_WITH_VIEWS ?>/profile.php" class="btn btn-primary btn-sm">
-                                                    <i class="fa fa-edit"></i>
-                                                </a>
-                                                <a href="<?= BASE_URL_WITH_VIEWS ?>/profile.php" class="btn btn-primary btn-sm">
-                                                    <i class="fa fa-trash"></i>
-                                                </a>
+                                                </form>
                                             </td>
+                                            <td>
+                                                <form method="POST" class="confirm">
+
+                                                    <input type="hidden" name="id_client" value="<?php echo ($client['id_client']) ?>">
+                                                    <button class="btn btn-sm btn-danger ">
+                                                        <i class="fa fa-edit"></i>Delete
+                                                    </button>
+
+                                                </form>
+                                            </td>
+
+
                                         </tr>
                                 </tbody>
                             <?php endforeach; ?>
@@ -131,9 +142,9 @@ $client->Insert_Client();
                     </div>
                     <div class="form-group">
                         <label for="observation_client">observation client:(optionnel)</label>
-                        <textarea class="form-control"  name="observation_client" id="observation_client" rows="3"></textarea>
+                        <textarea class="form-control" name="observation_client" id="observation_client" rows="3"></textarea>
                     </div>
-                   
+
 
                 </div>
 
@@ -141,10 +152,10 @@ $client->Insert_Client();
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" name="insertClient" class="btn btn-primary">Save data</button>
                 </div>
+            </form>
         </div>
-        </form>
+
     </div>
-</div>
 </div>
 <!-- ___________________________End modal insert Client____________________________________________ -->
 
