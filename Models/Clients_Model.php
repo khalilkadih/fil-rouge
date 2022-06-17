@@ -31,5 +31,21 @@ class Clients_Model{
         }
 
     }
+    // ______Delete Client_____________
+
+   static public function Delete_Client($id_client){
+
+    $cnx=Connection::Connect()->prepare('DELETE FROM client WHERE id_client=:id_client ');
+    $cnx->bindParam(':id_client',$_POST['id_client']);
+   if( $cnx->execute()){
+         return 'ok';
+    }
+    else
+    {
+         echo 'Something Wrong';
+    }   
+   
+
+   }
 
 }
