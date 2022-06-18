@@ -46,12 +46,33 @@ class Achat_Controller
     //____________Delte Achat____________
     public function Delete_Achat()
     {
-        if (isset($_POST['id_commande_fournisseur'])) {
-            $id_commande_fournisseur = $_POST['id_commande_fournisseur'];
+        if (isset($_GET['id_commande_fournisseur'])) {
+            $id_commande_fournisseur = $_GET['id_commande_fournisseur'];
 
             $deleteAchat = Achats_Model::Delete_Achat($id_commande_fournisseur);
             if ($deleteAchat == 'ok') {
                 Session::Set('success', 'Product Deleted Successfully');
+                Redirect::to('Achat');
+            } else {
+                echo 'Something went wrong';
+            }
+        }
+    }
+    // ___update Achat___///
+    public function Update_Achat()
+    {
+        if (isset($_POST['updatetAchat'])) {
+            
+            $data = array(
+                'id_commande_fournisseur' => $_POST['references_achat'],
+                'quantite_commande_fournisseur' => $_POST['quantite_acheter'],
+                'prix_total_commande_fournisseur' => $_POST['prix_achat'],
+                'date_commande_fournissuer' => $_POST['date_achat']
+            );
+           
+            $updateAchat = Achats_Model::UpdateAchat($data);
+            if ($updateAchat == 'ok') {
+                Session::Set('success', 'Product Updated Successfully');
                 Redirect::to('Achat');
             } else {
                 echo 'Something went wrong';

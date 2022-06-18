@@ -12,8 +12,21 @@ $product = new Product_Controller();
 $products = $product->Get_All_Product();
 $fournisseur = new Fournisseur_Controller();
 $fournisseurs = $fournisseur->Get_All_Fournisseur();
-$achat->Insert_Achat();
-$achat->Delete_Achat();
+
+if(isset($_POST['insertAchat'])){
+    $achat->Insert_Achat();
+}
+
+
+if(isset($_GET['DeleteAchat'])){
+    $achat->Delete_Achat();
+}
+
+
+if(isset($_POST['updatetAchat'])){
+    print_r($_POST);
+    $achat->Update_Achat();
+}
 $categorie = new Categorie_Controller();
 $categories = $categorie->Get_All_Categorie();
 
@@ -69,28 +82,41 @@ $categories = $categorie->Get_All_Categorie();
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($achats as $achat) : ?>
-                                    <tr>
-                                        <td><?= $achat['id_commande_fournisseur'] ?></td>
-                                        <td><?= $achat['name_product'] ?></td>
-                                        <td><?= $achat['name_fournisseur'] ?></td>
-                                        <td><?= $achat['quantite_commande_fournisseur'] ?></td>
-                                        <td><?= $achat['prix_total_commande_fournisseur'] ?></td>
-                                        <td><?= $achat['date_commande_fournissuer'] ?></td>
-                                        <td>
-                                            <form method="POST" class="confirm">
-                                                <input type="hidden" name="id_commande_fournisseur" value="<?= $achat['id_commande_fournisseur'] ?>">
-                                                <button type="submit" name="Edit_Achat" class="btn btn-primary">Edit</button>
-                                            </form>
-
+                                <?php foreach ($achats as $achat) :
+                                    
+                                    ?>
+                                  
+                                    <tr class="item">
+                                        <td class="references_achat">
+                                            <?= $achat['id_commande_fournisseur'] ?>
                                         </td>
+                                        <td class="name_product">
+                                            <?= $achat['name_product'] ?>
+                                        </td>
+                                        <td class="name_fournisseur">
+                                            <?= $achat['name_fournisseur'] ?>
+                                        </td>
+                                        <td class="quantite_acheter">
+                                            <?= $achat['quantite_commande_fournisseur'] ?>
+                                        </td>
+                                        <td class="prix_achat">
+                                            <?= $achat['prix_total_commande_fournisseur'] ?>
+                                        </td>
+                                        <td class="date_achat">
+                                            <?= $achat['date_commande_fournissuer'] ?>
+                                        </td>
+                                        
+                                        <td class="d-flex flex-row ">
 
+                                            <a href="#" class="btn btn-sm btn-warning updateAchatModel">
+                                                <i class="fa fa-edit"></i>
+                                                Edit</a>
+                                        </td>
                                         <td>
-                                            <form method="POST" class="confirm">
-                                                <input type="hidden" name="id_commande_fournisseur" value="<?= $achat['id_commande_fournisseur'] ?>">
-                                                <button type="submit" name="delete_Achat" class="btn btn-danger">Delete</button>
-
-                                            </form>
+                                            <a href="<?= BASE_URL ?>vente?DeleteAchat=1&id_commande_client=<?= $vente['id_commande_client'] ?>">
+                                            <i class="fa fa-trash"></i>   
+                                            Delete
+                                            </a>
                                         </td>
 
 
@@ -219,11 +245,109 @@ $categories = $categorie->Get_All_Categorie();
 
         </div>
     </div>
-
-
-
-
     <!-- __________________________________________ End Modal insert achat____________________________ -->
+    <!-- __________________________________________ Start Modal Update achat____________________________ -->
+
+    <div class="modal fade" id="updateAchatModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="updateAchatModel">Add Client</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="$(this).closest('.modal').modal('hide')">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="POST" class="needs-validation" novalidate>
+                    <div class="modal-body">
+                        <h1>ajouter un Client</h1>
+                        
+                            
+                        <div class="form-group">
+                            <label for="references_achat">reference achat</label>
+                            <input type="text" class="form-control" id="references_achat" name="references_achat" placeholder="reference achat" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Please provide a valid reference achat.
+                            </div>
+                        </div>
+                     
+                        <div class="form-group">
+                            <label for="quantite_acheter">quantite acheter</label>
+                            <input type="text" class="form-control" id="quantite_acheter" name="quantite_acheter" placeholder="quantite acheter" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Please provide a valid quantite acheter.
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="prix_achat">prix d'achat</label>
+                            <input type="text" class="form-control" id="prix_achat" name="prix_achat" placeholder="prix d'achat" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Please provide a valid prix d'achat.
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="date_achat">date d'achat</label>
+                            <input type="date" class="form-control" id="date_achat" name="date_achat" placeholder="date d'achat" required>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                            <div class="invalid-feedback">
+                                Please provide a valid date d'achat.
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="$(this).closest('.modal').modal('hide')">Close</button>
+                            <button type="submit" name="updatetAchat" class="btn btn-primary">Save data</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+        <!-- __________________________________________ End Modal update achat____________________________ -->
 
     <?php
     require_once('includes/footer.php');
+
+    ?>
+   <script>
+    //to show modal 
+    document.querySelectorAll('.updateAchatModel').forEach(btn => {
+        btn.addEventListener('click', e => {
+            let item = e.target.closest('.item');
+            const modal = document.querySelector('#updateAchatModel');
+            console.log(item);
+            console.log(modal);
+            $("#updateAchatModel").modal('show')
+        });
+        //to update data 
+        document.querySelectorAll('.updateAchatModel').forEach(btn => {
+
+            btn.addEventListener('click', e => {
+                let item = e.target.closest('.item');
+                const modal = document.querySelector('#updateAchatModel');
+                console.log(item);
+                console.log(modal);
+                modal.querySelectorAll('input').forEach(input => {
+                    input.value = item.getElementsByClassName(input.name)[0].innerText;
+                })
+                $("#updateAchatModel").modal('show')
+
+            });
+
+        })
+
+
+
+    })
+</script>

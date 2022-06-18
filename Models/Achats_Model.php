@@ -30,7 +30,6 @@ class Achats_Model{
         $cnx->bindParam(':quantite_commande_fournisseur',$data['quantite_commande_fournisseur']);
         $cnx->bindParam(':prix_total_commande_fournisseur',$data['prix_total_commande_fournisseur']);
         $cnx->bindParam(':date_commande_fournissuer',$data['date_commande_fournissuer']);
-
         if($cnx->execute())
         {
             return 'ok';
@@ -56,4 +55,20 @@ class Achats_Model{
     
     }
 
+    //____________Update Achat____________
+    static public function UpdateAchat($data)
+    {
+        $cnx=Connection::Connect()->prepare('UPDATE commande_fournisseur SET  id_commande_fournisseur=:id_commande_fournisseur,quantite_commande_fournisseur=:quantite_commande_fournisseur,prix_total_commande_fournisseur=:prix_total_commande_fournisseur,date_commande_fournissuer=:date_commande_fournissuer WHERE id_commande_fournisseur=:id_commande_fournisseur');
+        $cnx->bindParam(':id_commande_fournisseur',$data['id_commande_fournisseur']);
+        $cnx->bindParam(':quantite_commande_fournisseur',$data['quantite_commande_fournisseur']);
+        $cnx->bindParam(':prix_total_commande_fournisseur',$data['prix_total_commande_fournisseur']);
+        $cnx->bindParam(':date_commande_fournissuer',$data['date_commande_fournissuer']);
+        if($cnx->execute())
+        {
+            return 'ok';
+        }
+        else{
+            echo 'Something went wrong';
+        }
+    }
 }
