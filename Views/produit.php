@@ -169,14 +169,7 @@ $categories = $categorie->Get_All_Categorie();
                                 please enter Prix de vente
                             </div>
                         </div>
-                        <!-- //Normalement on travail avec select ici  -->
-                        <!-- <div class="form-group">
-                            <label for="id_categorie">id categorie</label>
-                            <input type="text" class="form-control" id="id_categorie" name="id_categorie" placeholder="Prix de vente" required>
-                            <div class="invalid-feedback">
-                                please enter Prix de vente
-                            </div>
-                        </div> -->
+                       
                         <div class="form-group">
 
                             <label for="categorie"> chose categorie:</label>
