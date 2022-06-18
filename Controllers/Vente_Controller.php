@@ -56,4 +56,31 @@ class Vente_Controller
             }
         }
     }
+
+    // ___Update Vente________
+
+    public function Update_Vente(){
+
+        if(isset($_POST['UpdateVnete'])){
+
+            $data = array(
+                'references_commande_client' => $_POST['id_commande_client'],
+                'id_product' => $_POST['id_product'],
+                'id_client' => $_POST['id_client'],
+                'quantite_commande_client' => $_POST['quantite_commande_client'],
+                'prix_total_commande_client' => $_POST['prix_total_commande_client'],
+                'date_commande_client' => $_POST['date_commande_client']
+            );
+            $updateVente=Ventes_Model::UpdateVente($data);
+            if($updateVente){
+                Session::Set('success', 'Vente modifiée avec succès');
+                Redirect::to('vente');
+            }
+            else{
+                echo 'Something went wrong';
+            }
+
+        }
+
+    }
 }
