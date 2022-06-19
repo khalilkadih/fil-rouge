@@ -34,8 +34,10 @@ class User_Controller
             print_r($data);
             $user = Users_Model::InserUser($data);
             if ($user == 'ok') {
-                Session::Set('success', 'Employer Added Successfully');
+                // Session::Set('success', 'User Added Successfully');
                 header('location:' . BASE_URL . 'utilisateur');
+                header('location:' .getUrlWIthMessage('utilisateur','User added successfully','success'));
+
             } else {
                 echo "insertion echouée";
             }

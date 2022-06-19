@@ -9,15 +9,13 @@ use database\Connection;
 class Login_Model
 {
 
-    static public function Login($email_user, $password_user)
+    static public function Login($data)
     {
-
-        $login = Connection::Connect()->prepare('SELECT * FROM user WHERE email_user = :email_user AND password_user = :password_user');
-        $login->execute(array(':email_user' => $email_user, ':password' => $password_user));
-        if ($login) {
-            return true;
-        } else {
-            return false;
-        }
+        $email_user=$data['email'];
+        $password_user=$data['password'];
+        
+        $pdoStatment = Connection::Connect()->prepare('SELECT * FROM user WHERE email_user = :email AND password_user = :password');
+        $pdoStatment->execute(array(':email' => $email_user, ':password' => $password_user));
+        return $pdoStatment->fetch();
     }
 }
