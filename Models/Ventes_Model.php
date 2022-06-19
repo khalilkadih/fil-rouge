@@ -61,6 +61,7 @@ class Ventes_Model
     static public function UpdateVente($data){
        
         $cnx = Connection::Connect()->prepare('UPDATE commande_client SET 
+        id_commande_client = :id_commande_client,
         quantite_commande_client=:quantite_commande_client,
         prix_total_commande_client=:prix_total_commande_client,
         date_commande_client=:date_commande_client
