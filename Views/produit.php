@@ -52,12 +52,12 @@ $categories = $categorie->Get_All_Categorie();
                 <div class="navbar-nav ms-auto d-flex">
                     <div class="nav-item ">
 
-                        <form metod="POST" class="d-flex  justify-content-end mt-3 ">
+                        <!-- <form metod="POST" class="d-flex  justify-content-end mt-3 ">
                             <input class="form-control me-2 " name="search" type="search" placeholder="Search..." aria-label="Search">
                             <button class="btn btn-info btn-sm" name="search" type="submit">
                                 <i class="fa fa-search"></i>
                             </button>
-                        </form>
+                        </form> -->
                     </div>
                     <div>
                         <a href="<?= BASE_URL_WITH_VIEWS ?>/utilisateur" class="mx-3 "> <img src="<?= BASE_URL_WITH_VIEWS ?>/img/user (1).png" class="mx-3 w-75"></a>
@@ -78,7 +78,7 @@ $categories = $categorie->Get_All_Categorie();
                             </div>
                         </div>
                         <div class=" table-responsive-sm table-responsive-md">
-                            <table class="table bg-white rounded shadow-sm align-middle overflow-scroll  table-hover">
+                            <table  id="tableofProduct" class="table bg-white rounded shadow-sm align-middle overflow-scroll  table-hover">
                                 <thead>
                                     <tr>
                                         <th>Id </th>

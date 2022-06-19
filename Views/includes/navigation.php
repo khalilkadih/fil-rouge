@@ -40,11 +40,13 @@
             <img src="<?= BASE_URL_WITH_VIEWS ?>/img/config.png"style="width: 30px;height: 30px;"> 
             Configuration
         </a>
+        <?php if($_SESSION['role']=='admin'):?>
         <a href="utilisateur" class="list-group-item mx-2 border-0 fw-bold  fs-6   bg-transparent my-2 p-2 ">
             <img src="<?= BASE_URL_WITH_VIEWS ?>/img/utilisateur.png"style="width: 30px;height: 30px;">
             Utilisateurs 
         </a>
-        <a href="index" class="list-group-item mx-5 border-0 fw-bold  fs-6  bg-transparent  mt-5 mb-2 ">
+        <?php endif;?>
+        <a href="logout" class="list-group-item mx-5 border-0 fw-bold  fs-6  bg-transparent  mt-5 mb-2 ">
             Logout <i class="fas fa-sign-out-alt"></i> 
         </a>
 

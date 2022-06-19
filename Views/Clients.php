@@ -55,7 +55,7 @@ if (isset($_POST['updateClient'])) {
                             </div>
                         </div>
                         <div class=" table-responsive-sm table-responsive-md">
-                            <table class="table bg-white rounded shadow-sm align-middle overflow-scroll  table-hover">
+                            <table id="tableofClien" class="table bg-white rounded shadow-sm align-middle overflow-scroll  table-hover">
                                 <thead>
                                     <tr>
                                         <th>Id </th>

@@ -12,7 +12,32 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="<?= BASE_URL_WITH_VIEWS ?>/includes/config.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
 <script>
+    //crete function to search script 
+         $(document).ready(function() {
+             document.querySelector('table').id='table';
+        $('#table').DataTable(
+            {
+                "pagingType": "full_numbers",
+                "lengthMenu": [
+                    [10, 25, 50, -1],
+                    [10, 25, 50, "All"]
+                ],
+                responsive: true,
+                language: {
+                    search: "_INPUT_",
+                    searchPlaceholder: "Search records",
+                }
+            }
+        );
+    });
+   
+
+
+
+    //end of search script for products
     var el = document.getElementById("dashboard");
     var toggleButton = document.getElementById("menu-toggle");
     toggleButton.onclick = function() {
@@ -148,24 +173,24 @@
     //start Modal
 
     // ---------------------------------Satart Delete-------------------------------------------
-        // $(document).ready(function () {
+    // $(document).ready(function () {
 
-        //     $('.deleteVente').on('click', function () {
+    //     $('.deleteVente').on('click', function () {
 
-        //         $('#DeleteVente').modal('show');
+    //         $('#DeleteVente').modal('show');
 
-        //         $tr = $(this).closest('tr');
+    //         $tr = $(this).closest('tr');
 
-        //         var data = $tr.children("td").map(function () {
-        //             return $(this).text();
-        //         }).get();
+    //         var data = $tr.children("td").map(function () {
+    //             return $(this).text();
+    //         }).get();
 
-        //         console.log(data);
+    //         console.log(data);
 
-        //         $('#delete_id').val(data[0]);
+    //         $('#delete_id').val(data[0]);
 
-        //     });
-        // });
+    //     });
+    // });
     // ----------------------------End Delete --------------------------------------------------
 
     // ------------------------ stat edit Modal------------------------------------------------------
@@ -199,21 +224,27 @@
     // ---------------------------End Edit Modal---------------------------------------------------
     var forms = document.querySelectorAll('.needs-validation')
 
-// Loop over them and prevent submission
-Array.prototype.slice.call(forms)
-  .forEach(function (form) {
-    form.addEventListener('submit', function (event) {
-      if (!form.checkValidity()) {
-        event.preventDefault()
-        event.stopPropagation()
-      }
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms)
+        .forEach(function(form) {
+            form.addEventListener('submit', function(event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
 
-      form.classList.add('was-validated')
-    }, false)
-  })
+                form.classList.add('was-validated')
+            }, false)
+        })
 </script>
+<script>
+    let messageHtml="<?= displayMessage(); ?>";
+   
+    if(messageHtml!=""){
+        console.log(messageHtml);
+        document.body.innerHTML=messageHtml+document.body.innerHTML;
+    }
 </script>
-</main>
 </body>
 
 </html>

@@ -361,7 +361,7 @@ if (isset($_POST['updateVente'])) {
         </div>
     </div>
 
-    <?php require_once('includes/footer.php'); ?>
+   <?php require_once('includes/footer.php'); ?>
     <script>
         //to show modal 
         document.querySelectorAll('.modalUpdateVente').forEach(btn => {
