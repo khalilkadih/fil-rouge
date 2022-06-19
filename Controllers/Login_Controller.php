@@ -13,19 +13,31 @@ class Login_Controller
     public function Login()
     {
 
-        if (isset($_POST['submit'])) {
-            $email_user = $_POST['username'];
-            $password_user = $_POST['password'];
+        if (isset($_POST['LoginUser'])) {
 
-            $login =Login_Model::Login($email_user, $password_user);
+            $data=array(
+                'email'=>$_POST['email'],
+                'password'=>$_POST['password']
+            );
+            // $email_user = $_POST['email'];
+            // $password_user = $_POST['password'];
+            if(empty($_POST['email']) OR empty($_POST['password'])){
+                header('location: '.getUrlWIthMessage('index','login failed','danger'));
+                exit;
+            }
+            $login = Login_Model::Login($data);
+        
             if ($login) {
-                // Session::Set('succes', 'Login Successfully');
-                header('location:' . BASE_URL.'home');
+                session_start();
+                $_SESSION['email'] = $_POST['email'];
+                $_SESSION['role']=$login['role_user'];
+                Session::Set('succes', 'Login Successfully');
+                 header('location:' .getUrlWIthMessage('home','you are logged in','success'));
             } else {
-                die('Login Failed');
-                // Session::Set('error', 'Login Failed');
-                header('location: index');
+                 header('location: '.getUrlWIthMessage('index','login failed','danger'));
             }
         }
     }
+    // __logout user_____
+    
 }
