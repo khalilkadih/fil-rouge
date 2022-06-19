@@ -5,24 +5,49 @@ require_once('views/includes/header.php');
 require_once('./app/Session.php');
 require_once('./app/session.php');
 require_once('./Views/includes/Alert.php');
-use database\Connection; 
+
+use database\Connection;
 use controllers\HomeController;
+
 $home = new HomeController();
-$pages = ['index', 'Achat', 'Clients','login', 'Configuration','dashboard','produit','fournisseurs','rapports','utilisateur','vente','home','product/edit','product/delete','InsertUser','Achat'];
-// $folders=['users_views','produits_views','vente_views','rapports_views','fournisseurs_views','clients_views','configuration_views','dashboard_views'];
-    $page = str_replace("/pfa/",'',getRequestCleanUri());
-    // echo $page;
-    // print_r($_GET);
+
+$pages = ['index', 'Achat', 'Clients', 'Configuration', 'produit', 'fournisseurs', 'rapports', 'utilisateur', 'vente', 'home', 'Achat','logout'];
+$protectedPages=['Achat', 'Clients','Configuration', 'produit', 'fournisseurs', 'rapports', 'utilisateur', 'vente', 'home', 'Achat','logout'];
+
+    $page = str_replace("/pfa/", '', getRequestCleanUri());
+if(in_array($page, $protectedPages)){
+    session_start();
+    if(!isset($_SESSION['email'])){
+        header('location: index');
+        exit;
+    }else{
+        openPage($page);
+    }
+}else{
+    openPage($page);
+}
+function getRequestCleanUri()
+{
+    return parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+}
+function openPage($page){
+    if($page=='logout')
+        logout();   
+    global $pages;
+    global $home;
     if ((in_array($page, $pages))) {
         $home->index($page);
-    } else if($page==''){
-           $home->index('index');
-    }else{
-       
+    } else if ($page == '') {
+        $home->index('index');
+    } else {
         include('views/includes/404.php');
     }
-
-    function getRequestCleanUri(){
-        return parse_url($_SERVER['REQUEST_URI'],PHP_URL_PATH);
-
+}
+ function Logout()
+    {
+        session_start();
+        session_destroy();
+        // print_r($_SESSION);
+        header('location:' . BASE_URL . 'index');
+        exit;
     }
