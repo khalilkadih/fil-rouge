@@ -6,7 +6,14 @@ require_once('includes/header.php');
 $client = new Client_Controller();
 $clients = $client->Get_All_Client();
 $client->Insert_Client();
-$client->Delete_Client();
+
+if (isset($_GET['deleteClient'])) {
+    echo 'cleint deleted' . $_GET['deleteClient'];
+    $client->Delete_Client();
+}
+if (isset($_POST['updateClient'])) {
+    $client->UpdateClient();
+}
 
 ?>
 
@@ -63,31 +70,25 @@ $client->Delete_Client();
                                 </thead>
                                 <tbody>
                                     <?php foreach ($clients as $client) : ?>
-                                        <tr>
-                                            <td><?= $client['id_client'] ?></td>
-                                            <td><?= $client['name_client'] ?>
-                                            <td><?= $client['telephone_client'] ?></td>
-                                            <td><?= $client['adress_client'] ?></td>
-                                            <td><?= $client['observation_client'] ?></td>
-                                            <td>
-                                                <form method="POST" class="confirm">
+                                        <tr class="item">
+                                            <td class="id_client"><?= $client['id_client'] ?></td>
+                                            <td class="name_client"><?= $client['name_client'] ?>
+                                            <td class="telephone_client"><?= $client['telephone_client'] ?></td>
+                                            <td class="adress_client"><?= $client['adress_client'] ?></td>
+                                            <td class="observation_client"><?= $client['observation_client'] ?></td>
+                                            <td class="text-center">
 
-                                                    <input type="hidden" name="id_client" value="<?php echo ($client['id_client']) ?>">
-                                                    <button class="btn btn-sm btn-warning ">
-                                                        <i class="fa fa-edit"></i>Edit
-                                                    </button>
-
-                                                </form>
+                                                <a href="#" class="btn btn-sm btn-warning modalUpdateClient ">
+                                                    <i class="fa fa-edit"></i>
+                                                    Edit
                                             </td>
                                             <td>
-                                                <form method="POST" class="confirm">
 
-                                                    <input type="hidden" name="id_client" value="<?php echo ($client['id_client']) ?>">
-                                                    <button class="btn btn-sm btn-danger ">
-                                                        <i class="fa fa-edit"></i>Delete
-                                                    </button>
+                                                <a class="btn btn-sm btn-danger confirm" href="<?= BASE_URL ?>Clients?deleteClient=1&id_client=<?= $client['id_client'] ?>">
+                                                    <i class="fa fa-edit"></i>
+                                                    Delete
+                                                </a>
 
-                                                </form>
                                             </td>
 
 
@@ -158,5 +159,95 @@ $client->Delete_Client();
     </div>
 </div>
 <!-- ___________________________End modal insert Client____________________________________________ -->
+<!-- _______________________________________Start Model update Clients______________________________________ -->
+
+<div class="modal fade" id="modalUpdateClient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalUpdateClient">Update Client</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="$(this).closest('.modal').modal('hide')">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="POST" class="needs-validation" novalidate>
+                <div class="modal-body">
+                    <h1>Editer un Client</h1>
+                    <div class="form-group">
+                        <input type="hidden" name="id_client" value="<?= $client['id_client'] ?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="name_client">Nom complet</label>
+                        <input type="text" class="form-control" id="name_client" name="name_client" placeholder="Nom complet" required>
+                        <div class="invalid-feedback">
+                            Veuillez entrer un nom complet
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="telephone_client">Telephone</label>
+                        <input type="text" class="form-control" id="telephone_client" name="telephone_client" placeholder="Telephone" required>
+                        <div class="invalid-feedback">
+                            Veuillez entrer un telephone
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="adress_client">Adress</label>
+                        <input type="text" class="form-control" id="adress_client" name="adress_client" placeholder="Adress" required>
+                        <div class="invalid-feedback">
+                            Veuillez entrer une adress
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="observation_client">observation client:(optionnel)</label>
+                        <textarea class="form-control" name="observation_client" id="observation_client" rows="3"></textarea>
+                    </div>
+
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="$(this).closest('.modal').modal('hide')">Close</button>
+                    <button type="submit" name="updateClient" class="btn btn-primary">Save data</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+
+
+<!-- ____________________________________________End Model update Clients______________________________________ --> -->
 
 <?php require_once('includes/footer.php'); ?>
+<script>
+    document.querySelectorAll('.modalUpdateClient').forEach(btn => {
+        btn.addEventListener('click', e => {
+            let item = e.target.closest('.item');
+            const modal = document.querySelector('#modalUpdateClient');
+            console.log(item);
+            console.log(modal);
+            $("#modalUpdateClient").modal('show')
+        });
+        //to update data 
+        document.querySelectorAll('.modalUpdateClient').forEach(btn => {
+
+            btn.addEventListener('click', e => {
+                let item = e.target.closest('.item');
+                const modal = document.querySelector('#modalUpdateClient');
+                console.log(item);
+                console.log(modal);
+                modal.querySelectorAll('input').forEach(input => {
+                    input.value = item.getElementsByClassName(input.name)[0].innerText;
+                })
+                $("#modalUpdateClient").modal('show')
+
+            });
+
+        })
+
+
+
+    })
+</script>

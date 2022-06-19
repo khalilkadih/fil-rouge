@@ -39,22 +39,38 @@ class Client_Controller
     //______Delete Client_________________
     public function Delete_Client()
     {
-        if(isset($_POST['id_client'])){
+        if (isset($_GET['id_client'])) {
 
-            $id_client=$_POST['id_client'];
+            $id_client = $_GET['id_client'];
 
-            $clientDeleted=Clients_Model::Delete_Client($id_client);
-            if($clientDeleted=='ok'){
-                Session::Set('success','Client Deleted Successfully');
+            $clientDeleted = Clients_Model::Delete_Client($id_client);
+            if ($clientDeleted) {
+                Session::Set('success', 'Client Deleted Successfully');
                 header('location:' . BASE_URL . 'Clients');
-            }
-            else{
+            } else {
                 echo 'Something Wrong';
-
             }
-            
         }
-
+    }
+    //_____Update Client_____//
+    public function UpdateClient()
+    {
+        if (isset($_POST['updateClient'])) {
+            $data = array(
+                'id_client' => $_POST['id_client'],
+                'nom' => $_POST['name_client'],
+                'telephone' => $_POST['telephone_client'],
+                'adress' => $_POST['adress_client'],
+                'observation' => $_POST['observation_client']
+            );
+            print_r($data);
+            $client = Clients_Model::Update_Client($data);
+            if ($client == 'ok') {
+                Session::Set('succes', 'Client Updated Successfully');
+                header('location:' . BASE_URL . 'Clients');
+            } else {
+                echo 'Something Wrong';
+            }
+        }
     }
 }
-

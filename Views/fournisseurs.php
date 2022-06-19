@@ -70,7 +70,6 @@ if(isset($_POST['EditFournisseurs'])){
                                 </thead>
                                 <tbody>
                                     <?php foreach ($fournisseurs as $fournisseur) : ?>
-
                                         <tr class="item">
                                             <td class="id_fournisseur"><?= $fournisseur['id_fournisseur'] ?></td>
                                             <td class="name_fournisseur"><?= $fournisseur['name_fournisseur'] ?></td>
@@ -89,9 +88,7 @@ if(isset($_POST['EditFournisseurs'])){
                                                     <i class="fa fa-trash"></i>
                                                     Delete
                                                 </a>
-
                                             </td>
-
                                         </tr>
                                 </tbody>
                             <?php endforeach; ?>
