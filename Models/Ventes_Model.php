@@ -52,27 +52,28 @@ class Ventes_Model
         $cnx = Connection::Connect()->prepare('DELETE FROM commande_client WHERE id_commande_client = :id_commande_client');
         $cnx->bindParam(':id_commande_client', $id_commande_client);
         if ($cnx->execute()) {
-            return 'ok';
+            return true;
         } else {
             return 'Something went wrong';
         }
     }
-    // ____update Vente____
+    //______________update vente______________//
     static public function UpdateVente($data){
-
-        $id_commande_client=$_POST['id_commande_client'];
-        $cnx=Connection::Connect()->prepare('UPDATE `fournisseur` SET `name_fournisseur`=:name_fournisseur,`telephone_fournisseur`=:telephone_fournisseur,`adress_fournisseur`=:adress_fournisseur,`observation_fournisseur`=observation_fournisseur WHERE id_fournisseur=:id_fournisseur');
-        $cnx->bindParam(':id_fournisseur',$_POST['id_fournisseur']);
-        $cnx->bindParam(':name_fournisseur',$_POST['name_fournisseur']);
-        $cnx->bindParam(':telephone_fournisseur',$_POST['telephone_fournisseur']);
-        $cnx->bindParam(':adress_fournisseur',$_POST['adress_fournisseur']);
-        $cnx->bindParam(':observation_fournisseur',$_POST['observation_fournisseur']);
-        if($cnx->execute()){
-            return true;
+       
+        $cnx = Connection::Connect()->prepare('UPDATE commande_client SET 
+        quantite_commande_client=:quantite_commande_client,
+        prix_total_commande_client=:prix_total_commande_client,
+        date_commande_client=:date_commande_client
+         WHERE id_commande_client=:id_commande_client');
+        $cnx->bindParam(':id_commande_client', $data['id_commande_client']);
+        $cnx->bindParam(':quantite_commande_client', $data['quantite_commande_client']);
+        $cnx->bindParam(':prix_total_commande_client', $data['prix_total_commande_client']);
+        $cnx->bindParam(':date_commande_client', $data['date_commande_client']);
+       
+        if ($cnx->execute()) {
+            return 'ok';
+        } else {
+            return 'Something went wrong';
         }
-        else{
-            return false;
-        }
-        
     }
 }
