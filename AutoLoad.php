@@ -1,6 +1,6 @@
 <?php 
 
-session_start();
+
 include_once('Constant.php');
 include_once('./app/Redirect.php');
 include_once('Views/includes/Alert.php');
@@ -15,13 +15,15 @@ spl_autoload_register(function($className)
         require_once($path);
     }
 });
-// foreach (glob('./app/controllers/*.php') as $filename)
-// {
-//     require_once($filename);
-// }
-// foreach (glob('./app/models/*.php') as $filename)
-// {
-//     require_once($filename);
-// }
+function displayMessage(){
+    if(isset($_GET['message'])){
+        ob_start();
+    ?><div class='alert alert-<?= $_GET['type']?>'><?= $_GET['message']?></div><?php
+    return ob_get_clean();
+    }else
+    return '';
+}
 
-
+function getUrlWIthMessage($url,$message,$type){
+    return  BASE_URL . $url.'?message='.$message.'&type='.$type;
+}
