@@ -48,7 +48,7 @@ if(isset($_POST['EditFournisseurs'])){
                             <h1 class="fs-4 ">Liste Fournisseurs</h1>
                             <div>
                                 <!-- <i class="fas fa-sort mx-3  "></i> -->
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalInsertFournisseur">
+                                <button type="button" class="btn btn-primary modalInsertFournisseur" data-toggle="modal" data-target="#modalInsertFournisseur">
                                     Ajouter un Un Fournisseur
                                 </button>
                             </div>
@@ -114,7 +114,7 @@ if(isset($_POST['EditFournisseurs'])){
             </div>
             <form method="POST" class="needs-validation" novalidate>
                 <div class="modal-body">
-                    <h1>ajouter un produit</h1>
+                    <h1>ajouter un Fournisseur</h1>
                     <div class="form-group">
                         <label for="name_fournisseur">name of Fournisseur</label>
                         <input type="text" class="form-control" id="name_fournisseur" name="name_fournisseur" placeholder="name of Fournissuer" required>
@@ -245,4 +245,13 @@ if(isset($_POST['EditFournisseurs'])){
 
 
     })
+    document.querySelectorAll('.modalInsertFournisseur').forEach(btn => {
+
+btn.addEventListener('click', e => {
+
+    $("#modalInsertFournisseur").modal('show')
+
+});
+
+})
 </script>
