@@ -11,7 +11,7 @@ use controllers\HomeController;
 
 $home = new HomeController();
 
-$pages = ['index', 'Achat', 'Clients', 'Configuration', 'produit', 'fournisseurs', 'rapports', 'utilisateur', 'vente', 'home', 'Achat','logout'];
+$pages = ['index', 'Achat', 'Clients','facture', 'Configuration', 'produit', 'fournisseurs', 'rapports', 'utilisateur', 'vente', 'home', 'Achat','logout'];
 $protectedPages=['Achat', 'Clients','Configuration', 'produit', 'fournisseurs', 'rapports', 'utilisateur', 'vente', 'home', 'Achat','logout'];
 
     $page = str_replace("/pfa/", '', getRequestCleanUri());
