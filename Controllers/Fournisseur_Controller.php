@@ -67,12 +67,31 @@ class Fournisseur_Controller{
             
             $fournisseurs=Fournisseurs_Model::UpdateFournisseur($data);
             if ($fournisseurs == 'ok') {
-                echo 'Updated successfully';
-                Session::Set('success', 'Product Updated Successfully');
+                Session::Set('success', 'fournisseurs Updated Successfully');
                 header('location:' . BASE_URL.'fournisseurs');
+
             } else {
                 echo "insertion echouée";
             }
         }
+    }
+    //_____get Fournisseur by id_____//
+    public function Get_fournisseur_By_Id($id_fournisseur)
+    {
+
+        $frns=Fournisseurs_Model::Get_fournisseur_By_Id($id_fournisseur);
+        if($frns){
+            header('location:' . BASE_URL.'fournisseurs');
+        } else {
+            echo "insertion echouée";
+        }
+
+        
+    }
+
+    //____________get count fournisseur__________//
+    public function Get_Count_Fournisseur(){
+        $count=Fournisseurs_Model::Get_Count_Fournisseur();
+        return $count;
     }
 }
