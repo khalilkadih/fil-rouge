@@ -61,4 +61,11 @@ class Clients_Model
             echo 'Something Wrong';
         }
     }
+    ////get count client_______________//
+    static public function Get_CountClient(){
+        $cnx=Connection::Connect()->prepare('SELECT count(*) FROM client');
+        $cnx->execute();
+        return $cnx->fetchColumn();
+
+    }
 }
