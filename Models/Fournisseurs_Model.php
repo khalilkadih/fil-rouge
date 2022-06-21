@@ -61,4 +61,21 @@ class Fournisseurs_Model
                 echo 'Something Wrong';
             }
         }
+
+        // _____Get Fournisseur by id_____//
+        static public function Get_fournisseur_By_Id($id_fournisseur)
+        {
+            $cnx = Connection::Connect()->prepare('SELECT * FROM fournisseur WHERE id_fournisseur=:id_fournisseur');
+            $cnx->bindParam(':id_fournisseur',$id_fournisseur);
+            $cnx->execute();
+            return $fournisseurs = $cnx->fetchAll()>0;
+        }
+
+        // _____Get count Fournisseur_____//
+        static public function Get_Count_Fournisseur()
+        {
+            $cnx = Connection::Connect()->prepare('SELECT count(*) FROM fournisseur');
+            $cnx->execute();
+            return $cnx->fetchColumn();
+        }
 }
