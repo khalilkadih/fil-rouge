@@ -84,4 +84,19 @@ class Vente_Controller
             }
         }
     }
+    //_____get_Vente_Client_ById_____///
+    public function Get_Vente_Client()
+    {
+        if (isset($_GET['get_Vente_Client'])) {
+            $id_client = $_GET['id_client'];
+            
+            
+             return Ventes_Model::Get_Vente_Client_ById($id_client);
+            // echo '<pre>';
+            // print_r($vente);
+            // echo '</pre>';
+            // die();
+            // return $vente;
+        }
+    }
 }
