@@ -3,11 +3,7 @@
 use Controllers\Categorie_Controller;
 use controllers\Product_Controller;
 
-// if(isset($_POST['search'])){
 
-// $find_product = new Product_Controller();
-// $find=$find_product->find_product();
-// }
 
 
 $product = new Product_Controller();

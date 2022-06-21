@@ -1,3 +1,11 @@
+    <?php
+
+
+    use Controllers\Fournisseur_Controller;
+    $countFrns=new Fournisseur_Controller();
+   $countFournsseur= $countFrns->Get_Count_Fournisseur();
+
+    ?>
 
     <?php require_once('includes/header.php'); ?>
     <main>
@@ -27,7 +35,7 @@
                                       Fournisseur
                                     </p>
                                 </div>
-                                <h1 class="fs-5 mt-5">243</h1>
+                                <h1 class="fs-5 mt-5"><?=$countFournsseur ?></h1>
                             </div>
                         </div>
                         <div class="col-lg-3  col-md-5  mb-4 ">
