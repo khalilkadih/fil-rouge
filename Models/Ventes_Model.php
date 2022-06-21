@@ -77,4 +77,22 @@ class Ventes_Model
             return 'Something went wrong';
         }
     }
+    //______________get vente client______________//
+    static public function Get_Vente_Client_ById($id_client)
+    {
+        $cnx = Connection::Connect()->prepare(' SELECT client.*,commande_client.quantite_commande_client,
+        commande_client.quantite_commande_client,commande_client.prix_total_commande_client,
+        commande_client.date_commande_client,commande_client.id_commande_client,
+        product.name_product,product.prix_achat,product.prix_vente FROM client,commande_client ,product
+        WHERE client.id_client=commande_client.id_client AND commande_client.id_product=product.id_product
+        and client.id_client=:id_client');
+        $cnx->bindParam(':id_client', $id_client);
+        $cnx->execute();
+        $venteClient = $cnx->fetchAll();
+        return $venteClient;
+
+
+    }
+
+
 }
