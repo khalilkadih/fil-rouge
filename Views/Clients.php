@@ -1,6 +1,7 @@
 <?php
 
 use Controllers\Client_Controller;
+use Controllers\Vente_Controller;
 
 require_once('includes/header.php');
 $client = new Client_Controller();
@@ -14,6 +15,7 @@ if (isset($_GET['deleteClient'])) {
 if (isset($_POST['updateClient'])) {
     $client->UpdateClient();
 }
+
 
 ?>
 
@@ -65,6 +67,7 @@ if (isset($_POST['updateClient'])) {
                                         <th>Observation </th>
                                         <th class=""> Edit</th>
                                         <th class=""> Delete</th>
+                                        <th>view</th>
 
                                     </tr>
                                 </thead>
@@ -83,13 +86,22 @@ if (isset($_POST['updateClient'])) {
                                                     Edit
                                             </td>
                                             <td>
-
                                                 <a class="btn btn-sm btn-danger confirm" href="<?= BASE_URL ?>Clients?deleteClient=1&id_client=<?= $client['id_client'] ?>">
                                                     <i class="fa fa-edit"></i>
                                                     Delete
                                                 </a>
-
                                             </td>
+
+                                            <td class="">
+
+                                                <a href="<?= BASE_URL ?>facture?get_Vente_Client=1&id_client=<?= $client['id_client']?>" class="btn btn-sm btn-primary">
+                                                    <i class="fa fa-eye"></i>
+                                                    View
+                                                </a>
+                                            </td>
+
+                                
+
 
 
                                         </tr>
@@ -220,6 +232,8 @@ if (isset($_POST['updateClient'])) {
 
 <!-- ____________________________________________End Model update Clients______________________________________ --> -->
 
+
+
 <?php require_once('includes/footer.php'); ?>
 <script>
     document.querySelectorAll('.modalUpdateClient').forEach(btn => {
@@ -250,4 +264,18 @@ if (isset($_POST['updateClient'])) {
 
 
     })
+
+    // document.querySelectorAll('.modalViewClient').forEach(btn => {
+
+    //     btn.addEventListener('click', e => {
+
+    //         $("#modalViewClient").modal('show')
+
+    //     });
+
+    // })
+
+    // $('#modalView').on('shown.bs.modal', function() {
+    //     $('#modalView').trigger('focus')
+    // })
 </script>
