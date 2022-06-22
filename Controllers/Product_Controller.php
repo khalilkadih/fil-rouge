@@ -14,22 +14,6 @@ class Product_Controller
         return $product;
     }
 
-
-    // ______get product by id__________
-    // public function get_product_by_id()
-    // {
-    //     if(isset($_POST['id_product'])){
-    //         $data=array(
-    //             'id_product'=>$_POST['id_product']
-    //         );
-            
-    //         $product=Products_Model::Get_Product_ById($data);
-    //         return $product;
-    //     }
-      
-       
-    // }
-
     //insert product
     public function InserProduct()
     {

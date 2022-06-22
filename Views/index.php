@@ -5,11 +5,11 @@ if(isset($_SESSION['email'])){
     header('location: home');
     exit;
 }
-use Controllers\Login_Controller;
+use Controllers\User_Controller;
 
 if (isset($_POST['LoginUser'])) {
     //   echo 'hello';
-    $login = new Login_Controller();
+    $login = new User_Controller();
     $login->Login();
 }
 
@@ -58,14 +58,14 @@ if (isset($_POST['LoginUser'])) {
                                     </div>
                                     
 
-                                    <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#">Forgot password?</a></p>
-                                    <button type="submit" name="LoginUser"> Login</button>
+                                    <!-- <p class="small mb-5 pb-lg-2"><a class="text-white-100" href="#">Forgot password?</a></p> -->
+                                    <button type="submit" class="btn btn-primary w-100" name="LoginUser"> Login</button>
                                 </form>
-                                <div class="d-flex justify-content-center text-center mt-4 pt-1">
+                                <!-- <div class="d-flex justify-content-center text-center mt-4 pt-1">
                                     <a href="#" class="text-white"><i class="fab fa-facebook-f fa-lg"></i></a>
                                     <a href="#" class="text-white"><i class="fab fa-twitter fa-lg mx-4 px-2"></i></a>
                                     <a href="#" class="text-white"><i class="fab fa-google fa-lg"></i></a>
-                                </div>
+                                </div> -->
 
                             </div>
 

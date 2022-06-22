@@ -53,11 +53,7 @@ if (isset($_POST['updateVente'])) {
 
                 <div class="navbar-nav ms-auto">
                     <div class="nav-item ">
-                        <form class="d-flex  justify-content-end mt-3 ">
-                            <input class="form-control me-2 " type="search" placeholder="Search..." aria-label="Search">
-                            <a href="./profile.html" class="mx-3 "> <img src="<?= BASE_URL_WITH_VIEWS ?>/img/user (1).png" class="mx-3 w-75"></a>
-
-                        </form>
+               
                     </div>
                 </div>
 
