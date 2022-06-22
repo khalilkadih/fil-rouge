@@ -99,4 +99,13 @@ class Vente_Controller
             // return $vente;
         }
     }
+
+    //___________________Get count vente___________________//
+
+    public function Get_Count_Vente()
+    {
+        $count_vente = Ventes_Model::Get_Count_Vente();
+        return $count_vente;
+        
+    }
 }
