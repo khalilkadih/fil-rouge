@@ -93,6 +93,16 @@ class Ventes_Model
 
 
     }
+    //______________get count vente product______________//
+
+    static public function Get_Count_Vente(){
+        $cnx = Connection::Connect()->prepare('SELECT count(*) FROM `commande_client` WHERE date_commande_client=(SELECT CURDATE())');
+        $cnx->execute();
+        $vente = $cnx->fetchColumn();
+        return $vente;
+        $cnx->closeCursor();
+        $cnx=null;
+    }
 
 
 }
