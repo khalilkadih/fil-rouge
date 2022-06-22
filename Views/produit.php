@@ -10,6 +10,7 @@ $product = new Product_Controller();
 
 $results = $product->Get_All_Product();
 
+
 if(isset($_GET['deleteProduct'])){
     echo "delete product";
     $product->DeleteProduct($_GET['id_product']);

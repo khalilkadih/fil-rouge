@@ -74,4 +74,16 @@ class Products_Model
       return 'not ok';
     }
   }
+  ////////////////__________get count of  product __________
+
+    static public function Get_Count_Product()
+    {
+      $cnx = Connection::Connect()->prepare('SELECT COUNT(*) FROM product');
+      $cnx->execute();
+      return $cnx->fetchColumn();
+      $cnx->closeCursor();
+      $cnx=null;
+    }
+
 }
+
