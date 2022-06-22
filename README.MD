@@ -7,8 +7,7 @@ une tâche indispensable pour maintenir la rentabilité de l’entreprise.
 
 #### un logiciel pour gerer votre Activite commerciale Quelles que soient les specificites de l'activite ou la taille de l'entreprise ,la gestion commerciale est une solution adaptee aux besoins des entreprise
 
-### la gestion de tout activite commerciale de la commande a la livraison :
-devis factures, gestion de stock ,etc ... 
+### la gestion de tout activite commerciale de la commande a la livraison : gestion de stock ... 
 
 
 
