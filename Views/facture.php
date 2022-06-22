@@ -13,9 +13,9 @@ if (isset($_GET['get_Vente_Client'])) {
 
     $showVenteClient = new Vente_Controller();
     $venteClient = $showVenteClient->Get_Vente_Client();
-    // echo'<pre>';
-    // print_r($venteClient);
-    // echo'</pre>';
+    if(count($venteClient)<1){
+      header('location:'.getUrlWIthMessage('Clients','ce client ne fait aucun vente','warning'));
+    }
 }
 
 ?>
