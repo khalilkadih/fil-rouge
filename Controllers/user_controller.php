@@ -102,4 +102,39 @@ class User_Controller
         else
         echo 'you outsid function update user';
     }
+
+
+//login user
+public function Login()
+    {
+
+        if (isset($_POST['LoginUser'])) {
+
+            $data=array(
+                'email'=>$_POST['email'],
+                'password'=>$_POST['password']
+            );
+            // $email_user = $_POST['email'];
+            // $password_user = $_POST['password'];
+            if(empty($_POST['email']) OR empty($_POST['password'])){
+                header('location: '.getUrlWIthMessage('index','login failed','danger'));
+                exit;
+            }
+            $login = Users_Model::Login($data);
+        
+            if ($login and password_verify($_POST['password'],$login['password_user'])) {
+                session_start();
+                $_SESSION['email'] = $_POST['email'];
+                $_SESSION['role']=$login['role_user'];
+                $_SESSION['name']=$login['name_user'];
+                $_SESSION['poste']=$login['poste'];
+               
+                Session::Set('succes', 'Login Successfully');
+                 header('location:' .getUrlWIthMessage('home','you are logged in','success'));
+            } else {
+                 header('location: '.getUrlWIthMessage('index','login failed','danger'));
+            }
+        }
+    }
+
 }

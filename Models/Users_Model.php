@@ -81,4 +81,16 @@ class Users_Model
         }
        
     }
+
+    ///login user
+
+    static public function Login($data)
+    {
+        $email_user=$data['email'];
+        //$password_user=$data['password'];
+        
+        $pdoStatment = Connection::Connect()->prepare('SELECT * FROM user WHERE email_user = :email');
+        $pdoStatment->execute(array(':email' => $email_user));
+        return $pdoStatment->fetch();
+    }
 }
