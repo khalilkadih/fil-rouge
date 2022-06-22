@@ -31,7 +31,7 @@
                       <h3 class="text-center my-2">El kadih khalil</h3>
                       <h5 class="text-center my-2">admin</h5>
                       <div class="col-md-12 text-center">
-                        <button type="submit" class="btn my-2 w-50" style="background:#DD10C9 ; color: #012970; ">Modifier
+                        <button type="submit" class="btn my-2 w-50" style="background:purple ; color: #012970; ">Modifier
                         </button>
                       </div>
                     </div>
@@ -57,7 +57,7 @@
                               <textarea class="form-control" name="message" rows="6" placeholder="Votre message" required></textarea>
                             </div>
                             <div class="col-md-12 text-center">
-                              <button type="submit" class="btn  w-25" style="background:#DD10C9 ; color: #012970; ">Modifier
+                              <button type="submit" class="btn  w-25" style="background:purple ; color: #012970; ">Modifier
                               </button>
                             </div>
                           </div>

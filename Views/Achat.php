@@ -36,7 +36,7 @@ $categories = $categorie->Get_All_Categorie();
     <div class="d-flex" id="dashboard">
         <?php require_once('includes/navigation.php'); ?>
 
-        <div id="page-content-dashboard" class="bt">
+        <div id="page-content-dashboard" class="bt" >
             <nav class="navbar navbar-expand-lg   py-1 px-4 cont ">
                 <div class="d-flex align-items-center">
 

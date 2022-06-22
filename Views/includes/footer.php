@@ -10,218 +10,40 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="<?= BASE_URL_WITH_VIEWS ?>/includes/config.js"></script>
 <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
 <script>
     //crete function to search script 
-         $(document).ready(function() {
-             document.querySelector('table').id='table';
-        $('#table').DataTable(
-            {
-                "pagingType": "full_numbers",
-                "lengthMenu": [
-                    [10, 25, 50, -1],
-                    [10, 25, 50, "All"]
-                ],
-                responsive: true,
-                language: {
-                    search: "_INPUT_",
-                    searchPlaceholder: "Search records",
-                }
+    $(document).ready(function() {
+        document.querySelector('table').id = 'table';
+        $('#table').DataTable({
+            "pagingType": "full_numbers",
+            "lengthMenu": [
+                [10, 25, 50, -1],
+                [10, 25, 50, "All"]
+            ],
+            responsive: true,
+            language: {
+                search: "_INPUT_",
+                searchPlaceholder: "Search records",
             }
-        );
+        });
     });
-   
-
-
 
     //end of search script for products
+    ///start show end hide dashboard
+
     var el = document.getElementById("dashboard");
     var toggleButton = document.getElementById("menu-toggle");
     toggleButton.onclick = function() {
         el.classList.toggle("toggled");
     };
-    //start coding chart
-    var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
-    var yValues = [55, 49, 44, 24, 15];
-    var barColors = ["red", "green", "blue", "orange", "brown"];
+    ///End show end hide dashboard
 
-    new Chart("myChart", {
-        type: "bar",
-        data: {
-            labels: xValues,
-            datasets: [{
-                backgroundColor: barColors,
-                data: yValues
-            }]
-        },
-        options: {
-            legend: {
-                display: false
-            },
-            title: {
-                display: true,
-                text: "World Wine Production 2018"
-            }
-        }
-    });
-    //end coding chart
-    //start coding chart2
-    var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
-    var yValues = [55, 49, 44, 24, 15];
-    var barColors = ["red", "green", "blue", "orange", "brown"];
 
-    new Chart("chart2", {
-        type: "bar",
-        data: {
-            labels: xValues,
-            datasets: [{
-                backgroundColor: barColors,
-                data: yValues
-            }]
-        },
-        options: {
-            legend: {
-                display: false
-            },
-            title: {
-                display: true,
-                text: "World Wine Production 2018"
-            }
-        }
-    });
-    //End coding chart2
-    //start coding chart3
-    var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
-    var yValues = [55, 49, 44, 24, 15];
-    var barColors = ["red", "green", "blue", "orange", "brown"];
-
-    new Chart("chart3", {
-        type: "bar",
-        data: {
-            labels: xValues,
-            datasets: [{
-                backgroundColor: barColors,
-                data: yValues
-            }]
-        },
-        options: {
-            legend: {
-                display: false
-            },
-            title: {
-                display: true,
-                text: "World Wine Production 2018"
-            }
-        }
-    });
-    //End coding chart2
-    //start coding chart4
-    var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
-    var yValues = [55, 49, 44, 24, 15];
-    var barColors = ["red", "green", "blue", "orange", "brown"];
-
-    new Chart("chart4", {
-        type: "bar",
-        data: {
-            labels: xValues,
-            datasets: [{
-                backgroundColor: barColors,
-                data: yValues
-            }]
-        },
-        options: {
-            legend: {
-                display: false
-            },
-            title: {
-                display: true,
-                text: "World Wine Production 2018"
-            }
-        }
-    });
-    //End coding chart2
-    var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
-    var yValues = [55, 49, 44, 24, 15];
-    var barColors = [
-        "#b91d47",
-        "#00aba9",
-        "#2b5797",
-        "#e8c3b9",
-        "#1e7145"
-    ];
-
-    new Chart("Chart", {
-        type: "doughnut",
-        data: {
-            labels: xValues,
-            datasets: [{
-                backgroundColor: barColors,
-                data: yValues
-            }]
-        },
-        options: {
-            title: {
-                display: true,
-                text: "World Wide Wine Production 2018"
-            }
-        }
-    });
-
-    //start Modal
-
-    // ---------------------------------Satart Delete-------------------------------------------
-    // $(document).ready(function () {
-
-    //     $('.deleteVente').on('click', function () {
-
-    //         $('#DeleteVente').modal('show');
-
-    //         $tr = $(this).closest('tr');
-
-    //         var data = $tr.children("td").map(function () {
-    //             return $(this).text();
-    //         }).get();
-
-    //         console.log(data);
-
-    //         $('#delete_id').val(data[0]);
-
-    //     });
-    // });
-    // ----------------------------End Delete --------------------------------------------------
-
-    // ------------------------ stat edit Modal------------------------------------------------------
-
-    $(document).ready(function() {
-        $('.editbtn').on('click', function(e) {
-            //  console.log(e.target);
-            $('#editmodal').modal('show');
-
-            $tr = $(this).closest('tr');
-            // console.log($tr[0]);
-
-            let data = $tr.children("td").map(function() {
-                console.log(this);
-                return $(this).text();
-            }).get();
-            // console.log(data);
-            let children = $tr.children();
-            let id_contact = children[0].textContent;
-            let name = children[1].textContent;
-            let email = children[2].textContent;
-            let phone = children[3].textContent;
-            let adress = children[4].textContent;
-            $('#editmodal .id_contact').val(data[0]);
-            $('#editmodal .flname').val(data[1]);
-            $('#editmodal .email').val(data[2]);
-            $('#editmodal .phone').val(data[3]);
-            $('#editmodal .adress').val(data[4]);
-        });
-    });
-    // ---------------------------End Edit Modal---------------------------------------------------
     var forms = document.querySelectorAll('.needs-validation')
 
     // Loop over them and prevent submission
@@ -238,12 +60,21 @@
         })
 </script>
 <script>
-    let messageHtml="<?= displayMessage(); ?>";
-   
-    if(messageHtml!=""){
+    let messageHtml = "<?= displayMessage(); ?>";
+
+    if (messageHtml != "") {
         console.log(messageHtml);
-        document.body.innerHTML=messageHtml+document.body.innerHTML;
+        document.body.innerHTML = messageHtml + document.body.innerHTML;
     }
+
+
+    var dropdownElementList = [].slice.call(document.querySelectorAll('.dropdown-toggle'))
+    var dropdownList = dropdownElementList.map(function(dropdownToggleEl) {
+        return new bootstrap.Dropdown(dropdownToggleEl)
+    })
+    let ele = document.getElementById(window.location.href.match(/pfa\/(\w+)(\?.*)?/i)[1]);
+    console.log(ele);
+    ele.style.backgroundColor = "red !important";
 </script>
 </body>
 

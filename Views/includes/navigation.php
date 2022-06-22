@@ -8,7 +8,7 @@
     <hr class="mb-3 ">
     <div class="list-group  d-flex ">
 
-        <a href="dashboard" class="list-group-item mx-2 p-2 border-0 my-2  rounded-3  fw-bold  fs-6  " style="background:#DD10C9 ;">
+        <a href="<?=BASE_URL?>home" id="home" class="list-group-item mx-2 p-2 border-0 my-2  rounded-3  fw-bold  fs-6  " style="background:purple ;">
             <img src="<?= BASE_URL_WITH_VIEWS ?>/img/home.png">
              Accueil
         </a>

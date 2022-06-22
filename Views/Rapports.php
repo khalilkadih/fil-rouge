@@ -112,7 +112,7 @@
                             <div>
                                 <i class="fas fa-sort mx-3  "></i>
                                 <a href="./ajouterEtudiant.html"> <button type="button" class="btn fw-bold  fs-6"
-                                        style="background:#DD10C9 ; color: #012970;">Ajouter une achat</button></a>
+                                        style="background:purple ; color: #012970;">Ajouter une achat</button></a>
                             </div>
                         </div>
                         <div class=" table-responsive-sm table-responsive-md">
