@@ -70,7 +70,7 @@ require_once('includes/header.php'); ?>
                         </div><!-- End sidebar categories-->
 
                         <h3 class="text-center my-2"><span class="text-primary">FullName</span> :<?= $data[0]['nom_etreprise'] ?></h3>
-                        <h3 class="text-center my-2 "> <span class="text-primary">Role</span>:<?= $data[0]['Telephone_Entpse'] ?></h3>
+                        <h3 class="text-center my-2 "> <span class="text-primary">telephone</span>:<?= $data[0]['Telephone_Entpse'] ?></h3>
                         <h3 class="text-center my-2"> <span class="text-primary">Email</span>:<?= $data[0]['email_Etpse'] ?></h3>
                         <h3 class="text-center my-2"><span class="text-primary">Adress</span>:<?= $data[0]['Adress'] ?></h3>
 

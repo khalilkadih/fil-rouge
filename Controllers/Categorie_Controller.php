@@ -60,8 +60,9 @@ class Categorie_Controller
             $id_user = $_GET['id_categorie'];
            if(Categories_Model::DeleteCategorie($id_user))
            {
-            Session::Set('success', 'categorie Deleted Successfully');
-                Redirect::to(BASE_URL,'Configuration');
+            // Session::Set('success', 'categorie Deleted Successfully');
+                // Redirect::to(BASE_URL,'Configuration');
+                header('location:'.getUrlWIthMessage('Configuration','categorie Deleted Successfully','success'));
            }
             else {
                 echo "deleted echouée";
