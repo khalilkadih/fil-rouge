@@ -73,4 +73,15 @@ class Client_Controller
             }
         }
     }
+
+    //get count client_______________//
+
+    public function Get_Count_Client(){
+
+         $countClient=Clients_Model::Get_CountClient();
+         return $countClient;
+    }
+
+
+
 }
