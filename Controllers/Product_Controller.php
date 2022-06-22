@@ -96,7 +96,13 @@ class Product_Controller
             }
     }
     
+    // _____Get count of Product_____
 
+    public function Get_Count_Product()
+    {
+        $count=Products_Model::Get_Count_Product();
+        return $count;
+    }
 }
 
 
